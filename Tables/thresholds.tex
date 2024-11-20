@@ -1,0 +1,22 @@
+\begin{table}[h!]
+\centering
+\caption[Threshold conditions for GS algorithm]{Table of threshold conditions for GS reconstruction-based algorithm. $R_{diff}$ and $R_{fit}$ are residues which ensure good double-folding quality in the $P_t'(A')$ vs. $A'$ curve..} %Events meeting the following criteria are kept.} %Duration is $10*dt\sim 343*dt$ where $dt\sim 3$ seconds.
+\begin{tabular}{ccccccc}
+\toprule
+    Duration  & $R_{diff}$ & $R_{fit}$ & Turn time & Wal\'en test slope & $|r|$ & $\langle M_A\rangle$ \\ 
+    \hline
+    %$\sim$ 30-1029 & $<0.2$ & $<0.2$ & 5$dt$ & $\leq 1$ &  &  \\
+    10$\Delta t$-342$\Delta t$ & $<0.2$ & $<0.2$ & 5$\Delta t$ & $|k|\leq 0.3$ & & \\
+    10$\Delta t$-342$\Delta t$ & $<0.2$ & $<0.2$ & 5$\Delta t$ & $|k|> 0.3$ & $\geq 0.8$ & $\leq 0.9$ \\
+\bottomrule %30-1029 (s)
+\end{tabular}
+\label{tab:thresholds}
+\end{table}
+
+%Solar wind
+%k <= 0.3:  1752
+%k > 0.3; r>|0.8|, <M_A> <0.9:  107
+
+% Magnetosheath
+%k <= 0.3:  2310
+%k > 0.3; r>|0.8|, <M_A> <0.9:  70
