@@ -1,32 +1,48 @@
-\chapter{Chapter 5. Conclusions and Future Work}
+\chapter{Coordinated Analysis}
 
-While organization is flexible, all theses and dissertations, no matter the discipline, share certain scholarly elements. You must provide an introductory statement or overview of your project; identify the significance of your investigation; discuss relevant literature to position your work; describe your methodology; state findings or results and their implications; and present conclusions and, if appropriate, recommendations for future work. Your chapters might be organized by kinds of information (for example, a literature review, methodology, and results), or you may organize conceptually with these elements logically interwoven.
+The dayside science and radiation belt science phases of the THEMIS mission offer optimal configuration for direct comparison of the near-Earth solar wind and magnetosphere, specifically those in 2008, 2009, 2018, and 2022. MMS is also used in conjunction with the THEMIS probes for the time periods identified in 2022. 19 time intervals were identified during these phases for which there were simultaneous measurements by two THEMIS probes, where one was in the solar wind and one was in the magnetosheath. For the 2022 orbit phase, MMS-1 data was included for its respective region. It should be noted that the data came from simultaneous measurement in two regions during the same interval, \textit{not} a measurement across the bow shock. Figure \ref{fig:timeseries-THM-magnetosheath} is an example of one of the time periods observed in the magnetosheath during the coordinated analysis. These measurements were taken in the magnetosheath with THM-C, while the measurements in the solar wind were taken with THM-B.
+% there were ... structures identified (Don't use as subject)
+Following the same procedures as outlined in Section \ref{sec:wavelet-algorithm}, 3308 structures were identified in the solar wind, and 3446 structures were identified in the magnetosheath during the coordinated intervals. The reconstruction on the right side of Figure \ref{fig:reconstruction} shows a flux rope reconstruction during this interval. Table \ref{tab:coordinated-summary} displays the results for the number of events identified with each method. Table \ref{tab:coordinated-MHD-Walen} shows the characterization of the events for each method according to MHD criteria (wavelet analysis) and Wal\'en slope (GS reconstruction).
 
-Below is just an example table. Notice that captions for tables are placed above the table while captions for figures are placed beneath the figure. LaTeX automatically formats this correctly
-\begin{table}[ht]
-
-\caption[Frequencies for equal-tempered scale, $A_4=440$]{Frequencies for equal-tempered scale, $A_4=440$ Hz. This table shows only the first five notes of a chromatic scale starting on $C_0$} %Just provide the title of the table in the square brackets. Then, in the next set of brackets, provide the entire caption (including the title again). By doing this, only the title of the table will be on the List of Tables instead of the entire caption. The first sentence of the caption can be the title.
-
-\begin{center}
-\resizebox{\columnwidth}{!}{
-\begin{tabular}{|c | c | c |} 
- \hline
-\textbf{Note} & \textbf{Frequency (Hz)} & \textbf{Wavelength} \\ [0.5ex] 
- \hline
- $C_0$ & 16.35 & 2109.89 \\ 
- \hline
- $C^{\#}_0/D^b_0$ & 17.32 & 1991.47 \\
- \hline
- $D_0$ & 18.35 & 1879.69 \\
- \hline
- $D^{\#}_0/E^b_0$ & 19.45 & 1774.20 \\
- \hline
- $E_0$ & 20.60 & 1674.62 \\ [1ex] 
- \hline
-\end{tabular}
-}
-\end{center}
-
-
+% summary table
+\begin{table}
+    \centering
+    \caption{Summary table$^d$}
+    \input{Tables/summary_table_coordinated}
+    \label{tab:coordinated-summary}
 \end{table}
+
+% Combined table (GS + wavelet)
+\begin{table}
+    \centering
+    \caption{Events meeting certain MHD (top) and Wal\'en test (bottom) criteria.}
+    \input{Tables/combined_summary_table_coordinated}
+    \label{tab:coordinated-MHD-Walen}
+\end{table}
+
+\noindent It can be seen from Table \ref{tab:coordinated-MHD-Walen} that there were more events characterized as static flux rope structures in the magnetosheath for the coordinated analysis periods. Approximately 79\% of the 1179 structures identified in the magnetosheath using wavelet analysis had a reduced cross helicity magnitude less than 0.3. While there were only incrementally more static structures identified in the magnetosheath than in the solar wind; however, the number of static structures represents a higher percentage of the total number of structures in the magnetosheath versus 66\% in the solar wind. Approximately 97\% of the structures identified in the magnetosheath with the GS reconstruction have a Wal\'en test slope value less than or equal to 0.3 for the coordinated event lists. In the solar wind, the percentage is slightly lower at 93\%, despite the number of structures identified with $|k|\leq 0.3$ being over 400 less than the number of structures in the magnetosheath.
+
+The wavelet analysis results for the coordinated periods are complimentary to the extended analysis periods, with a larger percentage of structures being identified as static structures in the magnetosheath than in the solar wind. However, in the extended analysis, there was a much smaller difference ($\sim$ 1\%) between the two regions. Additionally, there were more structures with $|k|\leq 0.3$ in the solar wind than in the magnetosheath for the extended analysis, which differs from the coordinated analysis. Figures \ref{fig:histogram-duration-coordinated}-\ref{fig:histogram-Asplit-coordinated} show the distributions of selected parameters from events identified during the coordinated intervals.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Histograms/duration_coordinated.png}
+    \caption[Histogram of duration from coordinated analysis]{Histogram of the duration of events identified (during the coordinated orbit intervals) by using wavelet analysis (red lines) and the GS reconstruction method (blue lines).}
+    \label{fig:histogram-duration-coordinated}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Histograms/scalesize_coordinated.png}
+    \caption[Histogram of scale size from coordinated analysis]{Same as Figure \ref{fig:histogram-duration-coordinated} but for scale size of events identified during the coordinated orbit intervals.}
+    \label{fig:histogram-scalesize-coordinated}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figures/Histograms/Asplit_coordinated.png}
+    \caption[Histogram of poloidal magnetic ﬂux per unit length from coordinated analysis]{Histograms for the local maximum magnetic flux $|A_m|$ of events identified via GS analysis during the coordinated orbit intervals.} %poloidal magnetic ﬂux per unit length
+    \label{fig:histogram-Asplit-coordinated}
+\end{figure}
+
 
