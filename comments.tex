@@ -6,16 +6,27 @@ High Alfv\'enicity ($|\sigma_c| \rightarrow 1$ and $\sigma_r \rightarrow 0$) ind
 
 
 \section{Data}
+\section{ In situ spacecraft data}
 In order to ensure that the MMS probes were in the quasi-perpendicular region of the magnetosheath, only time periods in the list with $x_{GSE}>0\hspace{5pt}R_E$ and $y_{GSE}>0\hspace{5pt}R_E$. \citeA{ToyEdens2:2024} includes all MMS probes in their analysis; however, we only consider MMS-1 since presumably the other 3 MMS probes are in the same region. 107 time periods were obtained for this study from the Toy-Edens list 
 
 % note: 107 periods were used for detection; however of the total events, 5 events overlapped with mine that I had already run and then there was 1 period with data not available and 3 with time periods not really inside the magnetosheath by visual identification of time series data
 
+\section{Instrumentation}
+\begin{itemize}
+    \item The Fast Plasma Investigation (FPI) includes four dual electron spectrometers (DES) and four dual ion spectrometers (DIS) per spacecraft for a total of 64 plasma spectrometers across the observatories. Each of the four MMS spacecraft has eight high-speed ion sensors and eight high-speed electron sensors
+    \item measure the velocity-space distribution of electrons from 10 eV to 30 keV and ions from 10 eV to 30 keV with time resolution of 30 ms, and 150 ms, respectively.
+    \item high resolution measurements – when burst data is available – and lower resolution Fast and Slow Survey measurements that are of equivalent resolution to similar particle spectrometers on previous magnetospheric missions.
+    \item measure 3D (energy + 2D angle) electron or ion differential directional flux distributions with very high temporal resolution.
+    \item measures differential directional flux of magnetospheric electrons and ions
+    \item FPI performs rapid collection of electrons and positive ions in phase space densities within and near sites in the Earth’s magnetosphere
+    \item at 32 different energies in 512 different directions with uniform coverage of the sky
+    \item 3D phase space density for either species at the spacecraft location must be stitched together from the measurements of eight different spectrometers
+\end{itemize}
 
-
-\section{Wavelet analysis}
-This is because of the windowed analysis: as the maxima in reduced magnetic helicity are recorded in each window, there will be overlapping events identified. After all the windows are searched, the compiled event list is then processed to eliminate overlapping events.
-
-by comparing two adjacently overlapping events and keeping the one with the highest maximum in $|\sigma_m|$. This is repeated until there are no overlapping events left.
+% MMS FGM
+These instruments measure DC magnetic field with a resolution of 10 ms, DC electric field with a resolution of 1 ms, electric plasma waves to 100 kHz, and magnetic plasma waves to 6 kHz. 
+measures magnetic field components on three orthogonal axes, by periodically saturating the ferromagnetic ring cores which in turn induce currents in the sense wires that are modulated by the strength of the ambient field.
+two magnetic ring cores sensing time varying magnetic flux in the cores
 
 
 \section{GS method}
@@ -89,7 +100,6 @@ Figure \ref{fig:wavelet-spectrograms-interval} shows an example of event interva
 
 
 \section{Conclusions \& Summary}
-As a subsection of the analysis, a coordinated analysis between the magnetosheath and solar wind over $\sim$250 hours was performed in order to compare simultaneous observations. 
 
 We find that in the magnetosheath, the magnetic structures identified seem to be compressed relative to the structures in the solar wind. The distributions of the scale sizes and durations of the events shows a linear trend with more, shorter (in duration and size) events in the magnetosheath than in the solar wind. From the GS-based method, we were able to see that the helicity density and poloidal flux were greater in the magnetosheath; these parameters would indicate more compact, twisted structures. From the $z$-axes, we find that the orientation of the polar angle sees a significant change from the solar wind to the magnetosheath: whereas the peak in the distribution of polar angles in the solar wind is around 60-70 degrees, the magnetosheath distribution separates into two peaks, with an almost 180 degree separation. With a wider distribution of polar angles, the magnetic structures in the magnetosheath seem to be less uniform in nature.
 

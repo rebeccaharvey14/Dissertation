@@ -1,6 +1,5 @@
 \chapter{Chapter 5. Coordinated Analysis}
-
-The dayside science and radiation belt science phases of the THEMIS mission offer optimal configuration for direct comparison of the near-Earth solar wind and magnetosphere, specifically those in 2008, 2009, 2018, and 2022. MMS is also used in conjunction with the THEMIS probes for the time periods identified in 2022. 19 time intervals were identified during these phases for which there were simultaneous measurements by two THEMIS probes, where one was in the solar wind and one was in the magnetosheath. For the 2022 orbit phase, MMS-1 data was included for its respective region. It should be noted that the data came from simultaneous measurement in two regions during the same interval, \textit{not} a measurement across the bow shock. 
+As a subsection of the analysis, a coordinated analysis between the magnetosheath and solar wind over $\sim$250 hours was performed in order to compare simultaneous observations.  The dayside science and radiation belt science phases of the THEMIS mission offer optimal configuration for direct comparison of the near-Earth solar wind and magnetosphere, specifically those in 2008, 2009, 2018, and 2022. MMS is also used in conjunction with the THEMIS probes for the time periods identified in 2022. 19 time intervals were identified during these phases for which there were simultaneous measurements by two THEMIS probes, where one was in the solar wind and one was in the magnetosheath. For the 2022 orbit phase, MMS-1 data was included for its respective region. It should be noted that the data came from simultaneous measurement in two regions during the same interval, \textit{not} a measurement across the bow shock. 
 
 \begin{figure}
     \centering
@@ -25,7 +24,7 @@ Table \ref{tab:coordinated-summary} displays the results for the number of event
 % summary table
 \begin{table}
     \centering
-    \caption{Summary table}
+    \caption{Summary table for events identified via wavelet analysis and the GS reconstruction algorithm}
     \input{Tables/summary_table_coordinated}
     \label{tab:coordinated-summary}
 \end{table}
@@ -64,3 +63,10 @@ The wavelet analysis results for the coordinated periods are complimentary to th
 \end{figure}
 
 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/sigm_sigc_coordinated_20090619_20090621.png}
+    \caption[Average reduced magnetic helicity and reduced cross helicity over time for 19-21 June 2009]{The average reduced magnetic helicity $\sigma_m$ and reduced cross helicity $\sigma_c$ as calculated by the wavelet analysis method (equations \ref{eq:sigm} and \ref{eq:sigc}) over one observation period by THM-C in the magnetosheath and THM-B in the solar wind over 19-21 June 2009. The grey interval in the top panel represents a bow shock crossing that is not included in our study.}
+    \label{fig:mhd-over-time}
+\end{figure}

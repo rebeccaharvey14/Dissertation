@@ -49,6 +49,7 @@ The $\zhat$ and perpendicular components of the current density are then found b
 
 \eql{eq:gradp2}{\delsq\Avec = -\mu_0\dv{}{A}\p{p + \frac{B_z^2}{2\mu_0}}}
 
+%https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2006JA011717
 \subsection{Derivation of the extended GS equation}
 The implementation by \cite{Chen:2021} utilizes the extended GS method, which still seeks to find the double-folding pattern between two $P_t'$ versus $A'$ curves, but with $A'=(1-\alpha)A$ and $P_t'=\p{1-\alpha}p + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0} + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0}$.  The factor $\alpha$ is a proportionality constant, which for a field-aligned flow is the average Alfv\'en Mach number squared, $\alpha=\langle M_A\rangle^2 \approx const$ in a frame of reference moving with the structure governed by the GS equation. The extended GS equation \citep{Teh:2018, Sonnerup:2006} is:
 \begin{equation}
@@ -60,7 +61,7 @@ which simplifies to the original GS equation (\ref{eq:GS}) when $\alpha\equiv 0$
 \section{Automated GS-based detection of SFRs}
 In both the original and the GS-type equations, the transverse pressure $P_t$, and its equivalent $P_t'$, are single variable functions of the magnetic flux function $A$ ($A'$ for the GS-type with $\alpha\equiv const$). With this feature, one can recover the 2D cross-section of a flux rope structure from the 1D spacecraft data by solving the initial value problem based on the GS equation, i.e., by carrying out the GS reconstruction procedures \citep{Hau:1999, HuSonnerup:2002, Hu:2017}. The GS-based techniques in this study consist of the GS-type reconstruction and the extended GS-based automated detection. Considering the complicated environment from the solar wind to the magnetosheath, we adopt the GS-type reconstruction in this study for selected events only.
 
-A cross section of a cylindrical flux rope structure is fully characterized by the 2D scalar flux function $A(x, y)$, and the field-line invariants $\p{B_z,J_z,p, P_t}$ vary among the nested cylindrical flux surfaces while remaining constant on each distinct surface with a distinct $A$ value \citep{Hu:2018}. As a spacecraft passes through the cross section of a magnetic flux rope with closed transverse field lines, it crosses the same set of magnetic field lines twice, the second time being in reverse order as the first half of the crossing. Therefore, the measured magnetic flux function $A$ associated with the field lines traversed by the spacecraft is double-folded, meaning there is a turning point at which an extremum in $A$ is reached. These features, especially the double-folding pattern, are the basis for the GS reconstruction-based identification algorithm \citep{Hu:2018}. Figure \ref{fig:GSreconstruction_Hu2017} shows diagram of a reconstruction of a magnetic cloud event and the associated flux rope structure. The cross section from the reconstruction algorithm can be seen as well as its relation to the magnetic field lines of the flux rope structure. A more detailed description of the implementation \citep{Hu:2018}, including a flowchart of the flux rope detection algorithm, can be found in Appendix \ref{ch:gs-flowchart}, and online\footnote{\url{fluxrope.info/flowchart.html}}.
+A cross section of a cylindrical flux rope structure is fully characterized by the 2D scalar flux function $A(x, y)$, and the field-line invariants $\p{B_z,J_z,p, P_t}$ vary among the nested cylindrical flux surfaces while remaining constant on each distinct surface with a distinct $A$ value \citep{Hu:2018}. As a spacecraft passes through the cross section of a magnetic flux rope with closed transverse field lines, it crosses the same set of magnetic field lines twice, the second time being in reverse order as the first half of the crossing. Therefore, the measured magnetic flux function $A$ associated with the field lines traversed by the spacecraft is double-folded, meaning there is a turning point at which an extremum in $A$ is reached. These features, especially the double-folding pattern, are the basis for the GS reconstruction-based identification algorithm \citep{Hu:2018}. Figure \ref{fig:GSreconstruction_Hu2017} shows diagram of a reconstruction of a magnetic cloud event and the associated flux rope structure. The cross section from the reconstruction algorithm can be seen as well as its relation to the magnetic field lines of the flux rope structure. A more detailed description of the implementation \citep{Hu:2018}, including a flowchart of the flux rope detection algorithm, can be found in Appendix \ref{appendix:gs-flowchart}, and online\footnote{\url{fluxrope.info/flowchart.html}}.
 
 \begin{figure}
     \centering
@@ -121,4 +122,21 @@ The Wal\'en test slope $w$, the slope of the linear regression between $\mathbf{
     \includegraphics[width=0.45\linewidth]{Figures/GS analysis/heatmap_magnetosheath.png}
     \caption[2D distributions of various parameters vs. $|A_m|$]{Caption}
     \label{fig:heatmap-A}
+\end{figure}
+
+\section{Flow velocities and orientation of SFRs}
+Lastly, a representation of the average flow velocities of the identified event intervals, i.e., $\mathbf{V_{HT}}$ vectors, is shown in Figure \ref{fig:VHT-xy}. For the identified SFR structures, we find that the corresponding flow velocities in the solar wind are fairly uniform and along the Sun-Earth direction; however, in the magnetosheath the flows appear to be largely deflected toward the duskside flank. Therefore the structures near the flanks (downstream of the quasi-perpendicular portion of the bow shock) ought to have elongated cross sections, resulting in large scale sizes. It is likely that while the structures may be compressed by the bow shock in the dimension along the normal direction of the bow shock, they may experience stretching along the dimension in the direction of the bulk flows, i.e., approximately perpendicular to the normal direction. This explains why some structures in the magnetosheath have large scale sizes, for instance, larger than the typical width of the magnetosheath itself.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Orbits/VHT_xy.png}
+    \caption[Orbit plot of flow vectors associated with the SFRs]{Plot showing the $\mathbf{V_{HT}}$ vectors at the locations of one-tenth of the total events identified in the solar wind (blue) and magnetosheath (red) on the GSE-$XY$ plane. The nominal bow shock (solid curve) and magnetopause (dashed curve) locations are drawn based on the models by \citet{Shue:1997} and \citet{SlavinHolzer:1984}, respectively. A reference vector of magnitude 400 km/s is shown in the upper left corner.}
+    \label{fig:VHT-xy}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Orbits/VHT_xy_scalesize.png}
+    \caption[Orbit plot of flow vectors associated with the SFRs, in relation to their scale size]{Plot showing the $\mathbf{V_{HT}}$ vectors at the locations of one-tenth of the total events identified in the solar wind and magnetosheath on the GSE-$XY$ plane. The color gradient indicates the scale size of the SFRs associated with the $\mathbf{V_{HT}}$ vectors. The nominal bow shock (solid curve) and magnetopause (dashed curve) locations are drawn based on the models by \citet{Shue:1997} and \citet{SlavinHolzer:1984}, respectively. A reference vector of magnitude 400 km/s is shown in the upper left corner.}
+    \label{fig:VHT-scalesize}
 \end{figure}
