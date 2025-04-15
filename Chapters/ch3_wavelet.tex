@@ -1,24 +1,16 @@
 \chapter{Chapter 3. Wavelet analysis as a single-spacecraft method}
 
-% transitional introduction
+Single-spacecraft measurements have been used in the identification of small-scale magnetic structures \citep{Pecora:2019, Telloni:2012, Hu:2018, Zheng:2018, Zhao:2020}. The time series data can be treated as a spatial snapshot due to the effective stationary state of the plasma medium traversed by a spacecraft relative to the fast-moving solar wind. Time series data are transformed directly to spatial distributions \citep{Taylor:1938}. Therefore, time-frequency transforms, such as wavelet transforms, are conceivably useful for analyzing features of in situ spacecraft time series at different frequencies over time \citep{Torrence:1998}. Specifically the power spectra associated with a number of selected MHD quantities are derived to characterize the underlying magnetic structures.
 
 \section{Wavelet transforms}
-
-Wavelet transforms are used to analyze time series with non-stationary power at different frequencies \citep{Torrence:1998}. Continuous wavelet transforms use non-orthogonal wavelet basis functions. Assuming a continuous signal as a function of time $t$, $x=x(t)$, the continuous wavelet transform is defined as
+Wavelet transforms are used to analyze time series with non-stationary power at different frequencies \citep{Torrence:1998} using non-orthogonal wavelet basis functions. Assuming a continuous signal as a function of time $t$, $x=x(t)$, the continuous wavelet transform is defined as
 \begin{equation}
     W(s,\tau) = \frac{1}{|s|^{1/2}}\int_{-\infty}^\infty x(t)\psi^*\p{\frac{t-\tau}{s}}\textnormal{dt}.
     \label{eq:wavetrans}
 \end{equation}
-Here $\psi^*$ is the complex conjugate of the wavelet basis function $\psi(t)$, which is a function that must be localized in time and frequency space, and has zero mean \citep{Torrence:1998}. Figure \ref{fig:wavelet-diagram} visually demonstrates the typical transform of a time series data set from the time domain to a time-frequency domain, including the Fourier transform and the wavelet transform.
+Here $\psi^*$ is the complex conjugate of the wavelet basis function $\psi(t)$, which is a function that must be localized in time and frequency space, and has zero mean \citep{Torrence:1998}.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\textwidth]{Figures/Comparisonoftransformations.jpeg}
-    \caption[Time and frequency resolutions of different transforms]{Time and frequency resolutions of different transforms applied to a one-dimensional time series dataset. The wavelet transform (bottom right) has non-uniform frequency and time resolution.}
-    \label{fig:wavelet-diagram}
-\end{figure}
-
-As usual, a discrete set of data points $x_n=x(t_n)$ with time resolution $\delta t$, the continuous wavelet transform takes the discrete form
+As usual, with a discrete set of data points $x_n=x(t_n)$ with time resolution $\delta t$, the continuous wavelet transform takes the discrete form
 \begin{equation}
     W_n(s,t) = \sum_{n'=0}^{N-1}x_{n'}\psi^*\pp{\frac{\p{n'-n}\delta t}{s}}.
     \label{eq:wavetrans2}
@@ -31,14 +23,33 @@ In practice, discrete wavelet transforms are implemented for time series data by
     s_j = s_0 2^{j dj},\hspace{20pt} j = 0,...,J
     \label{eq:scales}
 \end{equation}
-where $s_0 = 2\delta t$ and the choice of $dj$ is sufficiently small for the width of the wavelet basis function in spectral space. The Morlet wavelet given in Equation (\ref{eq:morlet}) is a good wavelet base because it is complex and has good frequency resolution, thus it is frequently used in small-scale flux rope identification \citep{Telloni:2012, Telloni:2013, Zhao:2020}.
+where $s_0 = 2\delta t$ and the choice of $dj$ is sufficiently small for the width of the wavelet basis function in spectral space. The Morlet wavelet given in Equation (\ref{eq:morlet}) is a good wavelet base because it is complex and has good frequency resolution, thus it is frequently used in small-scale flux rope identification \citep{Telloni:2012, Telloni:2013, Zhao:2020, Farge:1992}:
 \begin{equation}
-    \psi_0(\eta) = \pi^{-1/4}e^{i\omega_0\eta}e^{-\eta^2/2}
+    \psi_0(\eta) = \pi^{-1/4}e^{i\omega_0\eta}e^{-\eta^2/2}.
     \label{eq:morlet}
 \end{equation}
 
+Figure \ref{fig:wavelet-diagram} visually demonstrates the typical transform of a time series data set from the time domain to a time-frequency domain, including the Fourier transform and the wavelet transform. Wavelet transforms take a one-dimensional time series (top left corner of Figure \ref{fig:wavelet-diagram}) and transform it into a two-dimensional series (bottom right corner of Figure \ref{fig:wavelet-diagram}), whereas the Fourier transform applied to a one-dimensional time series yields a one-dimensional series in the frequency domain (top right corner of Figure \ref{fig:wavelet-diagram}). The Fourier transform decomposes a time series function into a combination of the frequencies present in the data set \citep{Farge:1992}. The Fourier transform of a time series $x(t)$ into its frequency domain (index $k$) is
+\begin{equation}
+    F(k) = \int_{-\infty}^\infty x(t) e^{-2\pi ikt/N} \textnormal{dt},
+    \label{eq:fourier}
+\end{equation}
+\noindent and with discrete data $x_n = x(t_n)$, it takes the form
+\begin{equation}
+    F_n(k) = \frac{1}{N} \sum_{n=0}^{N-1}x_{n} e^{-2\pi ikn/N}.
+    \label{eq:DFT}
+\end{equation}
+A short time Fourier transform (bottom left corner of Figure \ref{fig:wavelet-diagram}) can produce a two-dimensional time-frequency domain, but by segmenting the time series and performing a Fourier transform over the segments, the method only yields identical time-frequency domains, for each respective time segment. Fourier transforms theoretically retain all the `information' about an equation, but discrete Fourier transforms are a summation over a finite set and therefore are not as accurate. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figures/Comparisonoftransformations.jpeg}
+    \caption[Time and frequency resolutions of different transforms]{Time and frequency resolutions of different transforms applied to a one-dimensional time series dataset. The wavelet transform (bottom right) has non-uniform frequency and time resolution.}
+    \label{fig:wavelet-diagram}
+\end{figure}
+
 % The calculation in (\ref{eq:wavetrans2}) can be more efficiently done in Fourier space. Using a discrete Fourier transform, all $N$ convolutions can be done simultaneously for each scale $s$. The discrete Fourier transforms of the time series $\xhat_k=x_n$ and $\psihat^*(s\omega_k)=\psi^*(s,t)$ are
-% \eql{DFTx}{\xhat_k = \frac{1}{N}\sum_{n=0}^{N-1}x_n e^{-2\pi ikn/N}}
+% \eql{DFT}{\xhat_k = \frac{1}{N}\sum_{n=0}^{N-1}x_n e^{-2\pi ikn/N}}
 
 % \eql{DFTpsi}{}
 
@@ -105,7 +116,7 @@ Figure \ref{fig:wavelet-spectrograms-mms} shows time series data and the corresp
     \label{fig:wavelet-spectrograms-mms}
 \end{figure}
 
-Structures with local enhanced magnetic helicity are identified with specific criteria: (i) magnetic helicity with absolute values greater than 0.75, (ii) duration between 30 seconds and 3 hours, and (iii) if the event was within the cone of influence, which arises because of finite data segment length \citep{Torrence:1998}. I calculate reduced, normalized forms of magnetic helicity $\sigma_m$, cross helicity $\sigma_c$, and residual energy $\sigma_r$ in 2400-point windows ($\sim$3 hours for MMS and $\sim$2 hours for THEMIS) across the hours-long periods identified in the solar wind and magnetosheath. Figure \ref{fig:spectrograms-interval} displays the spectrograms of reduced magnetic helicity from 10:20-13:30 UT and 11:05-14:05 UT on 9 November 2019. These intervals are calculated from the time series in Figure \ref{fig:wavelet-spectrograms-mms}. Events identified with the wavelet analysis method are marked with a grey interval on the bottom panel, and events from the GS reconstruction analysis are marked on the top panel. For the wavelet analysis panel, the black contours represent event candidates with $|\sigma_m|\geq 0.75$ whereas the white contours indicate events that were established in the final event list. Inside the white contours, a white ``X" marks the absolute local maximum, and the yellow annotations and dashed lines indicate the scale corresponding to a maximum. This scale is taken as the duration of the event, and the time of the peak in reduced $\sigma_c$ is taken to the time-wise midpoint of the event. Therefore, the event interval start time will be the time of the peak in $|\sigma_m|$ minus half of the scale size of the peak. The events identified from this wavelet analysis can be further characterized by implementing the criteria that the events have (iv) corresponding cross helicity with absolute value less than 0.3, to ensure that there is low level of velocity fluctuations and/or (v) negative residual energy, which indicates that the magnetic energy is dominant.
+Structures with local enhanced magnetic helicity are identified with specific criteria: (i) magnetic helicity with absolute values greater than 0.75, (ii) duration between 30 seconds and 3 hours, and (iii) if the event was within the cone of influence, which arises because of finite data segment length \citep{Torrence:1998}. I calculate reduced, normalized forms of magnetic helicity $\sigma_m$, cross helicity $\sigma_c$, and residual energy $\sigma_r$ in 2400-point windows ($\sim$3 hours for MMS and $\sim$2 hours for THEMIS) across the hours-long periods identified in the solar wind and magnetosheath. Figure \ref{fig:spectrograms-interval} displays the spectrograms of reduced magnetic helicity from 10:20-13:30 UT and 11:05-14:05 UT on 9 November 2019. These intervals are calculated from the time series in Figure \ref{fig:wavelet-spectrograms-mms}. Events identified with the wavelet analysis method are marked with a grey interval. The black contours represent event candidates with $|\sigma_m|\geq 0.75$ whereas the white contours indicate events that were established in the final event list. Inside the white contours, a white ``X" marks the absolute local maximum, and the yellow annotations and dashed lines indicate the scale corresponding to a maximum. This scale is taken as the duration of the event, and the time of the peak in reduced $\sigma_c$ is taken to the time-wise midpoint of the event. Therefore, the event interval start time will be the time of the peak in $|\sigma_m|$ minus half of the scale size of the peak. The events identified from this wavelet analysis can be further characterized by implementing the criteria that the events have (iv) corresponding cross helicity with absolute value less than 0.3, to ensure that there is low level of velocity fluctuations and/or (v) negative residual energy, which indicates that the magnetic energy is dominant.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{Figures/Spectrograms/magnetichelicity_wave_events_09112019_1020.png}
@@ -117,14 +128,35 @@ Structures with local enhanced magnetic helicity are identified with specific cr
 It can be seen that not all grey event intervals have a white contour and marker for the maximum $\sigma_c$. This is because of the windowed analysis: as the maxima in reduced magnetic helicity are recorded in each window, there will be overlapping events identified. The intervals in Figure \ref{fig:spectrograms-interval} are overlapping by 600 data points (45 minutes for MMS data). After all the windows are searched, the compiled event list is then processed to eliminate overlapping events. By comparing two adjacently overlapping events and keeping the one with the highest maximum $|\sigma_m|$, this is repeated until there are no overlapping events left.
 
 
-\section{Event Categorization}
-Since the specificity of the wavelet analysis identification method relies on factors such as data segment length and choice of wavelet basis, in addition to ..., calculations of scale size cannot be considered as physically reliable as the calculations from the GS-based method.
-
-Table \ref{tab:wavelet-event-summary} categorizes the events identified via wavelet analysis based on meeting certain MHD criteria. Over half of the events in the solar wind have characteristics of static flux ropes ($|\sigma_m|\geq 0.75$, $|\sigma_c|\leq 0.3$, $\sigma_r<0$), whereas in the magnetosheath there are fewer events (approximately one-third) that meet these criteria.
-
+\section{Event categorization}
+There were 4260 events identified from the wavelet analysis in the magnetosheath across 1051 hours. For the solar wind, there were 3193 events identified across 676 hours via wavelet analysis. The occurrence rate for events in the solar wind from the wavelet method is about 4.7 events/hour and for the magnetosheath the corresponding rate is about 4.0 events/hour. Table  \ref{tab:regions-wavelet-summary} summarizes the events identified with the wavelet analysis algorithm.
 \begin{table}
     \centering
-    \input{Tables/wavelet_summary}
+    \caption{Summary table for identified events in the solar wind and magnetosheath via wavelet analysis as described in Section \ref{sec:wavelet-algorithm}.}
+    \input{Tables/summary_wavelet}
+    \label{tab:regions-wavelet-summary}
+\end{table}
+
+Properties of the magnetic structures are recorded during the identification process. Table \ref{tab:wavelet-stats} summarizes the statistical values for the identified events. The average duration of the events is 7.40 and 8.76 minutes for the solar wind and magnetosheath, respectively. In the solar wind, there are a large number of events with an average magnetic field of less than 10 nT, whereas in the magnetosheath there are relatively much fewer events with $\langle B\rangle < 10$ nT. The median magnetic field magnitude in the solar wind is 4.6 nT for events identified with wavelet analysis, and in the magnetosheath this number is 16.5 nT. As shown in Table \ref{tab:wavelet-stats}, the duration of the events has similar ranges for the two regions. However, for the scale sizes of the events in the magnetosheath, they range from $\sim$1507 km to 1.287$\times 10^6$ km, with a median and mean of 34410 km, $\sim$5.4$R_E$ and 1.108$\times 10^5$ km, $\sim$17.4 $R_E$, respectively. In the solar wind, the corresponding values are from 8975.2 km to 2.107$\times 10^6$ km, and a median (mean) of 54440 (1.612$\times 10^5$) km, $\sim$8.5 (25.3) $R_E$. It is important to note that the calculations of scale size cannot be considered as physically reliable as the calculations from the GS-based method since the specificity of the wavelet analysis identification method relies on factors such as data segment length and choice of wavelet basis, in addition to the calculations being done in the spacecraft frame (i.e. not in the shock frame) of reference.
+\begin{table}
+    \centering
+    \caption[Statistical values for the physical quantities of structures identified with wavelet analysis]{Statistical values for the physical quantities of the structures identified in in the magnetosheath (top) and solar wind (bottom) with wavelet analysis.}
+    \input{Tables/wavelet_stats}
+    \label{tab:wavelet-stats}
+\end{table}
+
+Table \ref{tab:wavelet-event-summary} categorizes the events identified via wavelet analysis based on meeting certain MHD criteria. Over half of the events in the solar wind have characteristics of static flux ropes ($|\sigma_m|\geq 0.75$, $|\sigma_c|\leq 0.3$, $\sigma_r<0$), whereas in the magnetosheath there are fewer events (approximately one-third) that meet these criteria.
+\begin{table}
+    \centering
     \caption{Summary table of events meeting certain MHD criteria for events identified via wavelet analysis in the magnetosheath and solar wind.}
     \label{tab:wavelet-event-summary}
+    \input{Tables/wavelet_summary}
 \end{table}
+The distribution of the reduced cross helicity and residual energy for all identified events in the solar wind and magnetosheath is shown in Figure \ref{fig:mhd_histogram-wavelet}. The histogram shows the averaged, reduced MHD quantities of the events identified by the wavelet method. Figure \ref{fig:mhd_histogram-wavelet} shows flatter distributions of reduced cross helicity $\sigma_c$ in the magnetosheath than in the solar wind. The reduced cross helicity distribution maintains a peak around $\sigma_c=0$ in both regions in Figure \ref{fig:mhd_histogram-wavelet}, with the solar wind having a steeper shape. The reduced residual energy has a peak at $\sigma_r=-1$, with values that are nearly evenly distributed between $(-1,1)$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/Histograms/sigr_sigc_wavelet.png}
+    \caption[Reduced cross helicity and reduced residual energy for all events identified via wavelet analysis]{Histograms of reduced cross helicity $\sigma_c$ (red) and reduced residual energy $\sigma_r$ (blue) for all solar wind (left) and magnetosheath events (right) identified via the wavelet method.}
+    \label{fig:mhd_histogram-wavelet}
+\end{figure}

@@ -58,6 +58,108 @@ The implementation by \cite{Chen:2021} utilizes the extended GS method, which st
 \end{equation}
 which simplifies to the original GS equation (\ref{eq:GS}) when $\alpha\equiv 0$. The extended GS method allows us to identify structures with significant remaining plasma ﬂow aligned with the local magnetic field in a proper frame of reference \citep{Chen:2022}.
 
+For a structure with a field-aligned flow, the momentum equation becomes
+\begin{equation}
+    \begin{split}
+        -\grad p \cross \jvec\cross\Bvec &= \rho\pp{\frac{\del v^2}{2} - \vvec\cross\p{\delcross\vvec}} \\
+        \rho\p{\delcross\vvec}\cross\vvec - \jvec\cross\Bvec &= -\grad p -\rho\frac{\del v^2}{2}. \\
+    \end{split}
+    \label{eq:momentum-steady-state}
+\end{equation}
+With the substitution $\rho=\frac{M_A B^2}{\mu_0 v_A^2} \Rightarrow v^2\rho = \frac{M_A B^2}{\mu_0}$, the right hand side of equation \ref{eq:momentum-steady-state} becomes
+\begin{equation}
+    -\grad p -\rho\frac{\del v^2}{2} = -\del\p{p + \frac{B^2}{2\mu_0}}.
+    \label{eq:momentum-RHS}
+\end{equation}
+Expanding the left hand side, we get
+\begin{equation}
+    \begin{split}
+        \rho\p{\delcross\vvec}\cross\vvec &- \frac{1}{\mu_0}\p{\delcross\Bvec}\cross\Bvec \\
+        \rho \pp{-\del\vvec\cdot\vvec + \p{\vvec\cdot\del}\vvec} &+ \frac{1}{\mu_0}\pp{\grad\Bvec\cdot\Bvec - \p{\Bvec\cdot\del}\Bvec} \\
+        \rho \pp{-\del\vvec\cdot\vvec + \deldot\p{\vvec\vvec} -\p{\deldot\vvec}\vvec} &+ \frac{1}{\mu_0}\pp{\grad\Bvec\cdot\Bvec - \deldot\p{\Bvec\Bvec} + \p{\deldot\Bvec} \Bvec}. \\
+    \end{split}
+\end{equation}
+The with $\p{\deldot\Bvec}=0$ and $\p{\deldot\vvec}=0$, and we substitute $\vvec=\frac{M_A \Bvec}{\sqrt{\mu_0\rho}}$ into $-\rho\del\vvec\cdot\vvec$ to get
+\begin{equation}
+    -\rho\del\vvec\cdot\vvec = -\rho\del\p{\frac{M_A \Bvec}{\sqrt{\mu_0\rho}}}\cdot\p{\frac{M_A \Bvec}{\sqrt{\mu_0\rho}}} = -\frac{M_A^2}{\mu_0}\p{\grad\Bvec\cdot\Bvec}.
+\end{equation}
+Therefore, the left hand side of \ref{eq:momentum-steady-state} becomes
+\begin{equation}
+    \begin{split}
+        \deldot\p{\rho\vvec\vvec} &- \frac{M_A^2}{\mu_0}\p{\grad\Bvec\cdot\Bvec}  - \frac{1}{\mu_0}\deldot\p{\Bvec\Bvec} + \frac{1}{\mu_0}\p{\grad\Bvec\cdot\Bvec}\\
+        &= \deldot\p{\rho\vvec\vvec - \frac{\Bvec\Bvec}{\mu_0}}
+        = \deldot\p{\frac{M_A^2}{\mu_0}\Bvec\Bvec - \frac{1}{\mu_0}\Bvec\Bvec} \\
+        &= \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} \\
+    \end{split}
+    \label{eq:momentum-LHS}
+\end{equation}
+Taking the right hand side (\ref{eq:momentum-RHS}) and left hand side (\ref{eq:momentum-LHS}) of equation (\ref{eq:momentum-steady-state}),
+\begin{equation}
+    \frac{1}{\mu_0}\deldot\pp{\p{1-\alpha}\Bvec\Bvec} = \del\p{p + \frac{B^2}{2\mu_0}}
+\end{equation}
+where $\alpha=M_A^2$. Taking another substitution, $\Cvec = \p{1-\alpha}\Bvec$,
+\begin{equation}
+    \label{eq:deldotCB}
+    \begin{split}
+        \deldot\p{\Cvec\Bvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        \p{\deldot\Cvec}\Bvec + \p{\Bvec\cdot\del}\Cvec &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        \p{\grad \Cvec}\cdot\Bvec - \Bvec\cross\p{\delcross \Cvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        \del\pp{\p{1-\alpha}\Bvec}\cdot\Bvec - \Bvec\cross\p{\delcross \Cvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        -\del\alpha\p{\Bvec\cdot\Bvec} + \p{1-\alpha}\del\Bvec\cdot\Bvec - \Bvec\cross\p{\delcross \Cvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        \p{1-\alpha}\del\p{\frac{B^2}{2}} - B^2\del\alpha - \Bvec\cross\p{\delcross \Cvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
+        \mu_0\pp{\grad\p{p + \frac{B^2}{2\mu_0} - \p{1-\alpha}\frac{B^2}{2\mu_0}} + \frac{B^2}{\mu_0}\del\alpha} &= -\Bvec\cross\p{\delcross \Cvec} \\
+        \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha} &= -\Bvec\cross\p{\delcross \Cvec} \\
+    \end{split}
+\end{equation}
+
+\noindent By breaking down $\Bvec$ and $\Cvec$ into their components, and noting that $\Bvec_t \cross \p{\delcross\Cvec}_t =0$ because there is no $z$-component of the gradients $\p{\frac{\partial}{\partial z}=0}$ of equation \ref{eq:deldotCB}, the triple cross product $\Bvec\cross\p{\delcross\Cvec}$ becomes
+\begin{equation}
+    \begin{split}
+        \Bvec\cross\p{\delcross\Cvec} &= \p{\Bvec_t + B_z\zhat}\cross\pp{\p{\delcross\Cvec}_t + \p{\delcross\Cvec}_z} \\
+        &= \Bvec_t\cross \p{\delcross\Cvec}_z + B_z\zhat\cross\p{\delcross\Cvec}_t \\
+        &= \p{\grad\Avec\cross\zhat}\cross \p{\delcross\Cvec}_z + B_z\zhat \cross \p{\grad C_z\cross\zhat} \\
+        &= \p{\delcross\Cvec}_z\del\Avec +  B_z\grad C_z \\
+    \end{split}
+\end{equation}
+where $\Bvec = \delcross\Avec = \grad\Avec\cross\zhat + B_z\zhat$.
+\begin{equation}
+    \begin{split}
+        \p{\delcross\Cvec}_z &= \delcross\p{1-\alpha}\Bvec \\
+        &= \delcross\pp{\p{1-\alpha}\p{\delcross\Avec}_t} \\
+        &= \del\p{1-\alpha}\cross\p{\delcross\Avec}_t + \p{1-\alpha}\delcross \p{\delcross\Avec}_t \\
+        &= \del\Avec\cdot\del\p{1-\alpha} - \del\p{1-\alpha}\cdot\del\Avec + \p{1-\alpha}\delcross \p{\delcross\Avec}_t \\
+        &= -\p{1-\alpha}\delsq\Avec \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        B_z\grad C_z &= B_z\grad\pp{\p{1-\alpha}B_z} \\
+        &= B_z\pp{B_z\del\p{1-\alpha} + \p{1-\alpha}\grad B_z} \\
+        &= -B_z^2\grad\alpha + \p{1-\alpha}\grad\p{\frac{B_z^2}{2}} \\
+        &= \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} - \frac{B_z^2}{2}\del\alpha
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    -\Bvec\cross\p{\delcross\Cvec} = \pp{\p{1-\alpha}\delsq\Avec} \del\Avec - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha}  &= \pp{\p{1-\alpha}\delsq\Avec} \del\Avec - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha \\
+        \mu_0\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \p{\frac{B^2-B_z^2}{2}}\del\alpha  &= \pp{\p{1-\alpha}\delsq\Avec}\del\Avec - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} \\
+        \mu_0\grad\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= \pp{\p{1-\alpha}\delsq\Avec}\del\Avec + \p{\frac{B_z^2-B^2}{2}}\del\alpha \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \mu_0\grad A\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= \pp{\p{1-\alpha}\delsq\Avec}\del\Avec + \p{\frac{B_z^2-B^2}{2}}\del A \frac{d\alpha}{d A} \\
+        \mu_0\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= \p{1-\alpha}\delsq\Avec + \p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{d A} \\
+    \end{split}
+\end{equation}
+
 \section{Automated GS-based detection of SFRs}
 In both the original and the GS-type equations, the transverse pressure $P_t$, and its equivalent $P_t'$, are single variable functions of the magnetic flux function $A$ ($A'$ for the GS-type with $\alpha\equiv const$). With this feature, one can recover the 2D cross-section of a flux rope structure from the 1D spacecraft data by solving the initial value problem based on the GS equation, i.e., by carrying out the GS reconstruction procedures \citep{Hau:1999, HuSonnerup:2002, Hu:2017}. The GS-based techniques in this study consist of the GS-type reconstruction and the extended GS-based automated detection. Considering the complicated environment from the solar wind to the magnetosheath, we adopt the GS-type reconstruction in this study for selected events only.
 
