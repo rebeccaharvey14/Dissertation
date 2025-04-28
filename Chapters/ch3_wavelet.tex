@@ -77,25 +77,36 @@ where $\mathbf{B}\p{\mathbf{x},t}$ is the magnetic field, $\mathbf{A}\p{\mathbf{
 Normalized MHD quantities give insight into the nature of magnetic field structures, and allow us to identify and characterize these events. Approximated in the time domain, the normalized cross helicity and residual energy can be calculated using
 \eql{eq:sigctime}{\sigma_c = \frac{2\langle\mathbf{v}\cdot\mathbf{b}\rangle}{\langle\mathbf{v}^2\rangle + \langle\mathbf{b}^2\rangle}}
 \eql{eq:sigrtime}{\sigma_r = \frac{\langle\mathbf{v}^2\rangle - \langle\mathbf{b}^2\rangle}{\langle\mathbf{v}^2\rangle + \langle\mathbf{b}^2\rangle}}
-where $\mathbf{v}$ is the remaining flow in the de Hoffman-Teller frame. Single spacecraft measurements cannot be used directly calculate reduced magnetic helicity, therefore other methods are required to approximate this quantity. The power spectral density of a time series describes the distribution of the energy across the frequency components of a signal. \cite{Matthaeus:1982} showed that a form of the magnetic helicity can be calculated using single spacecraft measurements by utilizing the power spectral density. This can often be done in a similar fashion using wavelet transforms \citep{Telloni:2012, Telloni:2013}. The continuous wavelet transform of a one-dimensional time series yields the two-dimensional time-scale spectrogram for a finite time period. This shows how the amplitude of a feature versus the scale varies with time, therefore making it useful in studying the features associated with multi-scale structures. The so-called reduced form of the magnetic helicity gives quantitative information about the magnetic helicity density along the radial dimension, $x$, and is calculated with Fourier transforms of the $y$- and $z$-components of the magnetic field, $\tilde{F}(B_y)$ and $\tilde{F}(B_z)$,
+where $\mathbf{v}$ is the remaining flow in the de Hoffman-Teller frame. Single spacecraft measurements cannot be used directly calculate reduced magnetic helicity, therefore other methods are required to approximate this quantity. The power spectral density of a time series describes the distribution of the energy across the frequency components of a signal. \cite{Matthaeus:1982} showed that a form of the magnetic helicity can be calculated using single spacecraft measurements by utilizing the power spectral density. This can often be done in a similar fashion using wavelet transforms \citep{Telloni:2012, Telloni:2013}. The continuous wavelet transform of a one-dimensional time series yields the two-dimensional time-scale spectrogram for a finite time period. This shows how the amplitude of a feature versus the scale varies with time, therefore making it useful in studying the features associated with multi-scale structures. The so-called reduced form of the magnetic helicity gives quantitative information about the magnetic helicity density along the radial dimension, $X$, and is calculated with Fourier transforms of the $Y$- and $Z$-components of the magnetic field, $\tilde F(B_Y)$ and $\tilde F(B_Z)$,
 \begin{equation}
-    H_m(k) = \frac{2 \textnormal{Im}\pp{S_{yz} (k)}}{k} = \frac{2 \textnormal{Im}\pp{\tilde{F}^*(B_y)\tilde{F}(B_z)}}{k}
+    H_m(k) = \frac{2 \textnormal{Im}\left[S_{YZ} (k)\right]}{k} = \frac{2 \textnormal{Im}\pp{\tilde F^*(B_Y)\tilde F(B_Z)}}{k},
 \end{equation}
-where $S_{yz}(k)$ is one element of the reduced magnetic power spectral density tensor \citep{Matthaeus:1982}. \cite{Telloni:2012} showed that taking $x$ along the radial direction from the sun, wavelet transforms of the magnetic field $y$- and $z$-components, the Els\"asser variables $z^\pm$, and kinetic and magnetic energies enable an efficient way to calculate the reduced normalized magnetic helicity $\sigma_m$, cross helicity $\sigma_c$, and residual energy $\sigma_r$, corresponding to equations (\ref{eq:Hc})-(\ref{eq:Er}):
+where $S_{YZ}(k)$ is one element of the reduced magnetic power spectral density tensor \citep{Matthaeus:1982}. \cite{Telloni:2012} showed that taking $X$ along the radial direction from the sun, wavelet transforms of the magnetic field $Y$- and $Z$-components, the Els\"asser variables $Z^\pm$, and kinetic and magnetic energies enable an efficient way to calculate the reduced normalized magnetic helicity $\sigma_m$, cross helicity $\sigma_c$, and residual energy $\sigma_r$, corresponding to equations (\ref{eq:Hc})-(\ref{eq:Er}):
 \begin{equation}
-    \sigma_m(k,t) = 2\frac{\textnormal{Im}\pp{W_y^*(k,t)W_z(k,t)}}{|W_y(k,t)|^2 + |W_z(k,t)|^2} ,
+    \sigma_m(k,t) = 2\frac{\textnormal{Im}\left[W_Y(k,t)W_Z^*(k,t)\right]}{|W_X(k,t)|^2 + |W_Y(k,t)|^2 + |W_Z(k,t)|^2} ,
     \label{eq:sigm}
 \end{equation}
 \begin{equation}
-        \sigma_c(k,t) = \frac{W^+(k,t)-W^-(k,t)}{W^+(k,t)+W^-(k,t)} ,
-        \label{eq:sigc}
+    \sigma_c(k,t) = \frac{W^+(k,t)-W^-(k,t)}{W^+(k,t)+W^-(k,t)} ,
+    \label{eq:sigc}
 \end{equation}
  \begin{equation}
-    \sigma_r(k,t) = \frac{W_{kin}(k,t) - W_{mag}(k,t)}{W_{kin}(k,t) + W_{mag}(k,t)}
+    \sigma_r(k,t) = \frac{W_{kin}(k,t) - W_{mag}(k,t)}{W_{kin}(k,t) + W_{mag}(k,t)} .
     \label{eq:sigr}
 \end{equation}
 
-\noindent where $W_x(k,t),W_y(k,t),W_z(k,t),W^+(k,t)$, and $W^-(k,t)$ are the wavelet transforms of $B_x,B_y,B_z,z^+$, and $z^-$, respectively. The Els\"asser variables, $z^\pm = \mathbf{v} \pm \mathbf{b}$, are the combination of the velocity and magnetic field fluctuations in Alfv\'en units. $W_{kin}(k,t)$ and $W_{mag}(k,t)$ are the sums of the power of the wavelet transforms of the components of the velocity and magnetic field (in Alfv\'en units).
+\noindent Here $W_X(k,t),W_Y(k,t),W_Z(k,t),W^+(k,t)$, and $W^-(k,t)$ are the wavelet transforms of $B_X,B_Y,B_Z,Z^+$, and $Z^-$, respectively. The Els\"asser variables, $Z^\pm = \mathbf{v} \pm \mathbf{b}$, are the combination of the velocity and magnetic field fluctuations in Alfv\'en units. $W_{kin}(k,t)$ and $W_{mag}(k,t)$ are the sums of the power of the wavelet transforms of the components of the velocity and magnetic field (in Alfv\'en units). Equations (\ref{eq:sigm})-(\ref{eq:sigr}) can also be written in terms of scale and time : %by multiplying the numerator and denominator by $V_0 = \frac{2\pi}{k}$,
+\begin{equation}
+    \sigma_m(s,t) = 2\frac{ V_{X0}\textnormal{Im}\pp{W_Y(s,t)W_Z^*(s,t)}}{V_0 \p{|W_X(s,t)|^2 + |W_Y(s,t)|^2 + |W_Z(s,t)|^2}}, %+ V_{Y0}\textnormal{Im}\pp{\tilde F^*(B_Z)\tilde F(B_X)} + V_{Z0}\textnormal{Im}\pp{\tilde F^*(B_X)\tilde F(B_Y)}
+    \label{eq:sigm-st}
+\end{equation}
+\begin{equation}
+    \sigma_c(s,t) = \frac{W^+(s,t)-W^-(s,t)}{W^+(s,t)+W^-(s,t)} ,
+\end{equation}
+ \begin{equation}
+    \sigma_r(s,t) = \frac{W_{kin}(s,t) - W_{mag}(k,t)}{W_{kin}(s,t) + W_{mag}(s,t)} .
+\end{equation}
+since $\kvec \parallel \Vvec_0$ \citep{Zhao:2021, Horbury:2008, Taylor:1938}, where $\Vvec_0$ is the average plasma velocity. Equation \ref{eq:sigm-st} only shows the first term of the trace of the power spectrum because the radial component is dominant over the tangential component at 1 AU.
 
 
 % \begin{equation}
@@ -107,7 +118,7 @@ where $S_{yz}(k)$ is one element of the reduced magnetic power spectral density 
 % \end{equation}
 
 \section{Algorithm for identification of magnetic structures} \label{sec:wavelet-algorithm}
-Figure \ref{fig:wavelet-spectrograms-mms} shows time series data and the corresponding spectrograms of the reduced MHD quantities from equations (\ref{eq:sigm})-(\ref{eq:sigr}). These spectrograms show how the reduced MHD quantities vary in time and frequency, thus allowing us to search them for characteristics that are distinctive to different types of magnetic structures. Panel (f) of Figure \ref{fig:wavelet-spectrograms-mms} displays the spectrogram reduced magnetic helicity, which describes the “knottedness” of the magnetic field lines. Panel (g) shows the normalized measure of alignment between magnetic and velocity fluctuations, reduced cross helicity, and panel (h) shows the imbalance between magnetic and kinetic energy, or reduced residual energy \citep{Matthaeus:1982}.
+In Figure \ref{fig:wavelet-spectrograms-mms}, the time series of the magnetic field and plasma parameters from 10:20-13:30 UT on 9 November 2019 are shown. Panels (a) and (b) show the magnetic field and velocity components of the time period, with magnetic field magnitude reaching a maximum of about 20 nT and a flow velocity deflected from the Sun-Earth direction. Panel (c) shows relatively high proton density, varying from 20 to 30 cm$^{-3}$, and proton temperature of 1-2$\times 10^{6}$ K, which is typical for magnetosheath plasma. Panel (d) shows the Alfv\'en speed and the bulk plasma speed with a mean value for this 3 hour period (193 km/s) subtracted. Panel (e) shows the proton beta, which is between approximately 1-100. Panel (f) of Figure \ref{fig:wavelet-spectrograms-mms} displays the spectrogram reduced magnetic helicity, which describes the “knottedness” of the magnetic field lines. Panel (g) shows the normalized measure of alignment between magnetic and velocity fluctuations, reduced cross helicity, and panel (h) shows the imbalance between magnetic and kinetic energy, or reduced residual energy \citep{Matthaeus:1982}. These spectrograms show how the reduced MHD quantities vary in time and frequency, thus allowing us to search them for characteristics that are distinctive to different types of magnetic structures.
 
 \begin{figure}
     \centering
@@ -128,7 +139,7 @@ Structures with local enhanced magnetic helicity are identified with specific cr
 It can be seen that not all grey event intervals have a white contour and marker for the maximum $\sigma_c$. This is because of the windowed analysis: as the maxima in reduced magnetic helicity are recorded in each window, there will be overlapping events identified. The intervals in Figure \ref{fig:spectrograms-interval} are overlapping by 600 data points (45 minutes for MMS data). After all the windows are searched, the compiled event list is then processed to eliminate overlapping events. By comparing two adjacently overlapping events and keeping the one with the highest maximum $|\sigma_m|$, this is repeated until there are no overlapping events left.
 
 
-\section{Event categorization}
+\section{Event categorization}\label{sec:wavelet-results}
 There were 4260 events identified from the wavelet analysis in the magnetosheath across 1051 hours. For the solar wind, there were 3193 events identified across 676 hours via wavelet analysis. The occurrence rate for events in the solar wind from the wavelet method is about 4.7 events/hour and for the magnetosheath the corresponding rate is about 4.0 events/hour. Table  \ref{tab:regions-wavelet-summary} summarizes the events identified with the wavelet analysis algorithm.
 \begin{table}
     \centering
@@ -137,10 +148,10 @@ There were 4260 events identified from the wavelet analysis in the magnetosheath
     \label{tab:regions-wavelet-summary}
 \end{table}
 
-Properties of the magnetic structures are recorded during the identification process. Table \ref{tab:wavelet-stats} summarizes the statistical values for the identified events. The average duration of the events is 7.40 and 8.76 minutes for the solar wind and magnetosheath, respectively. In the solar wind, there are a large number of events with an average magnetic field of less than 10 nT, whereas in the magnetosheath there are relatively much fewer events with $\langle B\rangle < 10$ nT. The median magnetic field magnitude in the solar wind is 4.6 nT for events identified with wavelet analysis, and in the magnetosheath this number is 16.5 nT. As shown in Table \ref{tab:wavelet-stats}, the duration of the events has similar ranges for the two regions. However, for the scale sizes of the events in the magnetosheath, they range from $\sim$1507 km to 1.287$\times 10^6$ km, with a median and mean of 34410 km, $\sim$5.4$R_E$ and 1.108$\times 10^5$ km, $\sim$17.4 $R_E$, respectively. In the solar wind, the corresponding values are from 8975.2 km to 2.107$\times 10^6$ km, and a median (mean) of 54440 (1.612$\times 10^5$) km, $\sim$8.5 (25.3) $R_E$. It is important to note that the calculations of scale size cannot be considered as physically reliable as the calculations from the GS-based method since the specificity of the wavelet analysis identification method relies on factors such as data segment length and choice of wavelet basis, in addition to the calculations being done in the spacecraft frame (i.e. not in the shock frame) of reference.
+Properties of the magnetic structures are recorded during the identification process. Table \ref{tab:wavelet-stats} summarizes the statistical values for the identified events. The average duration of the events is 7.40 and 8.76 minutes for the solar wind and magnetosheath, respectively. In the solar wind, there are a large number of events with an average magnetic field of less than 10 nT, whereas in the magnetosheath there are relatively much fewer events with $\langle B\rangle < 10$ nT. The median magnetic field magnitude in the solar wind is 4.6 nT for events identified with wavelet analysis, and in the magnetosheath this number is 16.5 nT. As shown in Table \ref{tab:wavelet-stats}, the duration of the events has similar ranges for the two regions. However, for the scale sizes of the events in the magnetosheath, they range from $\sim$1507 km to 1.287$\times 10^6$ km, with a median and mean of 34410 km, $\sim$5.4 $R_E$ and 1.108$\times 10^5$ km, $\sim$17.4 $R_E$, respectively. In the solar wind, the corresponding values are from 8975.2 km to 2.107$\times 10^6$ km, and a median (mean) of 54440 (1.612$\times 10^5$) km, $\sim$8.5 (25.3) $R_E$. It is important to note that the calculations of scale size cannot be considered as physically reliable as the calculations from the GS-based method since the specificity of the wavelet analysis identification method relies on factors such as data segment length and choice of wavelet basis, in addition to the calculations being done in the spacecraft frame of reference.
 \begin{table}
     \centering
-    \caption[Statistical values for the physical quantities of structures identified with wavelet analysis]{Statistical values for the physical quantities of the structures identified in in the magnetosheath (top) and solar wind (bottom) with wavelet analysis.}
+    \caption[Statistical values for the physical quantities of structures identified with wavelet analysis]{Statistical values for the physical quantities of the structures identified in the magnetosheath (top) and solar wind (bottom) with wavelet analysis.}
     \input{Tables/wavelet_stats}
     \label{tab:wavelet-stats}
 \end{table}

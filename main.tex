@@ -13,7 +13,7 @@
 %********************************************
 
 %BASIC INFORMATION
-\newcommand{\thesistitle}{TITLE}
+\newcommand{\thesistitle}{Observational analysis of small-scale structures across the Earth’s bow shock}
 \newcommand{\studentname}{Rebecca Harvey}
 \newcommand{\degree}{Doctor of Philosophy}%e.g., Master of Science in Engineering, Doctor of Philosophy, etc.
 \newcommand{\department}{Space Science}% Do not include the words "The department of." Just write the name of your department.
@@ -108,6 +108,8 @@
 \def\bvec{\mathbf{b}}
 \def\jvec{\mathbf{j}}
 \def\vvec{\mathbf{v}}
+\def\Vvec{\mathbf{V}}
+\def\kvec{\mathbf{k}}
 \def\xhat{\hat{x}}
 \def\zhat{\hat{z}}
 \def\psihat{\hat{\psi}}
@@ -220,11 +222,14 @@
 \doublespacing
 %The contents of your chapters are located in separate chapter.tex files. This template only contains 3 chapter files (ch1, ch2, and chLast). To edit these files, open the corresponding chapter.tex files. To create new chapters, make a new .tex file for each chapter and then insert them into your document below with the \include{name of your chapter .tex file} command.
 
+\addcontentsline{toc}{chapter}{Organization}
+\include{Chapters/organization}
 \include{Chapters/ch1_intro}
 \include{Chapters/ch2_data}
 \include{Chapters/ch3_wavelet}
 \include{Chapters/ch4_GS}
 \include{Chapters/ch5_coordinated}
+\include{Chapters/ch6_results}
 
 %************************
 %Back Matter of your Thesis Begins
