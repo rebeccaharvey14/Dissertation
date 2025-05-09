@@ -22,7 +22,7 @@
 
 
 \section{GS-based method}
-% The automated detection algorithm moves through different windowed periods of the data, with each window identifying events of certain duration. We employ windows with a minimum duration from approximately 30 seconds (10$\Delta t$) to a maximum duration of 343 data points, which corresponds to approximately 17 minutes for THEMIS data, and 25 min for MMS data. 
+% The automated detection algorithm moves through different windowed periods of the data, with each window identifying events of certain duration. I employ windows with a minimum duration from approximately 30 seconds (10$\Delta t$) to a maximum duration of 343 data points, which corresponds to approximately 17 minutes for THEMIS data, and 25 min for MMS data. 
 % In order to identify two-dimensional magnetic structures from single-spacecraft data \citep{Paschmann:2008}, the in situ magnetic field and plasma data from a specified window of time are transformed into the co-moving frame, notably the de Hoffman-Teller frame \citep{deHoffman-Teller:1950}.
 Through a trial-and-error process to determine the optimal orientation of the $z$-axis, the azimuthal and poloidal angles that define this frame transformation are chosen.
 % The azimuthal angle $\Phi$ is the rotational angle around the $z$-axis (in the $xy$-plane), and polar angle $\theta$ is the angle between the $z$-axis and the velocity vector of the spacecraft.
@@ -56,14 +56,14 @@ Figures \ref{fig:histogram-orientation}, \ref{fig:histogram-flux}, and \ref{fig:
     \label{fig:reconstruction-Feb2022}
 \end{figure}
 
-\section{Conclusions \& Summary}
 
-We find that in the magnetosheath, the magnetic structures identified seem to be compressed relative to the structures in the solar wind. The distributions of the scale sizes and durations of the events shows a linear trend with more, shorter (in duration and size) events in the magnetosheath than in the solar wind. From the GS-based method, we were able to see that the helicity density and poloidal flux were greater in the magnetosheath; these parameters would indicate more compact, twisted structures. From the $z$-axes, we find that the orientation of the polar angle sees a significant change from the solar wind to the magnetosheath: whereas the peak in the distribution of polar angles in the solar wind is around 60-70 degrees, the magnetosheath distribution separates into two peaks, with an almost 180 degree separation. With a wider distribution of polar angles, the magnetic structures in the magnetosheath seem to be less uniform in nature.
+
+\section{Conclusions \& Summary}
+From the $z$-axes, the orientation of the polar angle sees a significant change from the solar wind to the magnetosheath: whereas the peak in the distribution of polar angles in the solar wind is around 60-70 degrees, the magnetosheath distribution separates into two peaks, with an almost 180 degree separation. With a wider distribution of polar angles, the magnetic structures in the magnetosheath seem to be less uniform in nature.
 
 \begin{enumerate}
     \item The GS-based reconstruction-based algorithm identifies events with a broader range of cross helicity values than with wavelet analysis.
     \item Static structures were more dominant in both the solar wind and magnetosheath, but there was a higher percentage of quasi-static structures identified in the magnetosheath than in the solar wind. %~10\%
     \item The coordinated analysis shows a direct comparison of the events identified in the magnetosheath and solar wind from simultaneous observations. These results augment the overall analysis, showing trends that align with the extended list.
     \item The identifying spacecraft typically moves through the structures in the magnetosheath in a much more oblique manner when identified with the GS-based method, than when structures are identified in the solar wind.
-    \item Identified structures in the magnetosheath (broadly defined as flux ropes with vortical flows) were likely elongated in the downstream flow direction.
 \end{enumerate}

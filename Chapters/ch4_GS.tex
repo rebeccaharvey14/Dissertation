@@ -2,12 +2,12 @@
 
 \section{The Grad-Shafranov equation}
 %\input{Chapters/Introduction/GS_equation}
-The Grad-Shafranov (GS) equation describes the force balance between the Lorentz force and the gradient of the thermal pressure $p$ \citep{Sonnerup:1996, Hau:1999} in two spatial dimensions ($x,y$) with $\frac{\partial}{\partial z}=0$, as given below,
+The Grad-Shafranov (\gls{GS}) equation describes the force balance between the Lorentz force and the gradient of the thermal pressure $p$ \citep{Sonnerup:1996, Hau:1999} in two spatial dimensions ($x,y$) with $\frac{\partial}{\partial z}=0$, as given below,
 \begin{equation}
     \delsq A = \npdv{2}{A}{x} + \npdv{2}{A}{y} = -\mu_0 \dv{P_t}{A} = - \mu_0\dv{}{A}\p{p + \frac{B_z^2}{2\mu_0}}.
     \label{eq:GS}
 \end{equation}
-Here, $A_z(x,y) = A$ is the magnetic scalar potential, $B_z$ is the $z$-component of the magnetic field, and $P_t$ is the total pressure (thermal plus magnetic).
+Here, \gls{magnetic flux function} is the magnetic scalar potential, or the magnetic flux function, $B_z$ is the $z$-component of the magnetic field, and $P_t$ is the transverse pressure (thermal plus axial magnetic pressure).
 
 \subsection{Derivation of the original GS equation}
 Starting with the magnetic field expressed by the magnetic vector potential and balancing the gradient of the pressure with the Lorentz force in 2D ($\frac{\partial}{\partial z}=0$),
@@ -76,15 +76,13 @@ Replacing $A$ with $A_z$ for the sake of simplicity, we arrive at the form for t
 
 %https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2006JA011717
 \subsection{Derivation of the extended GS equation}
-The implementation by \cite{Chen:2021} utilizes the extended GS method, which still seeks to find the double-folding pattern between two $P_t'$ versus $A'$ curves, but with $A'=(1-\alpha)A$ and $P_t'=\p{1-\alpha}p + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0} + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0}$.  The factor $\alpha$ is a proportionality constant, which for a field-aligned flow is the average Alfv\'en Mach number squared, $\alpha=\langle M_A\rangle^2 \approx const$ in a frame of reference moving with the structure governed by the GS equation. The extended GS (or GS-type) equation \citep{Teh:2018, Sonnerup:2006} is:
+The implementation by \cite{Chen:2021} utilizes the extended GS method, which still seeks to find the double-folding pattern between two \gls{transverse pressure} versus \gls{transformed magnetic flux function} curves, but with $A'=(1-\alpha)A$ and $P_t'=\p{1-\alpha}p + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0} + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0}$.  The factor \gls{alpha} is a proportionality constant, which for a field-aligned flow is the average Alfv\'en Mach number squared, $\alpha=\langle M_A\rangle^2 \approx const$ in a frame of reference moving with the structure governed by the GS equation. The extended GS (or GS-type) equation \citep{Teh:2018, Sonnerup:2006} is:
 
 \begin{equation}
     \nabla^2 A' = -\mu_0\frac{\mathrm{d}}{\mathrm{d}A'}\left[\left(1-\alpha\right)p + \left(1-\alpha\right)^2\frac{B_z^2}{2\mu_0} + \alpha\left(1-\alpha\right)\frac{B^2}{2\mu_0} \right]
     \label{eq:GSextended}
 \end{equation}
-which simplifies to the original GS equation (\ref{eq:GS}) when $\alpha\equiv 0$. The extended GS method allows us to identify structures with significant remaining plasma flow aligned with the local magnetic field in a proper frame of reference \citep{Chen:2022}.
-
-For a structure with a field-aligned flow, the momentum equation becomes
+which simplifies to the original GS equation (\ref{eq:GS}) when $\alpha\equiv 0$. The extended GS method allows us to identify structures with significant remaining plasma flow aligned with the local magnetic field in a proper frame of reference \citep{Chen:2022}. For a structure with a field-aligned flow, the momentum equation is
 \begin{equation}
     \begin{split}
         -\grad p \cross \jvec\cross\Bvec &= \rho\pp{\frac{\del v^2}{2} - \vvec\cross\p{\delcross\vvec}} \\
@@ -93,56 +91,48 @@ For a structure with a field-aligned flow, the momentum equation becomes
     \label{eq:momentum-steady-state}
 \end{equation}
 Expanding the left hand side of (\ref{eq:momentum-steady-state}), it becomes
-\[
-\begin{split}
+\[\begin{split}
     \rho\p{\delcross\vvec}\cross\vvec &- \frac{1}{\mu_0}\p{\delcross\Bvec}\cross\Bvec \\
     \rho \pp{-\del\vvec\cdot\vvec + \p{\vvec\cdot\del}\vvec} &+ \frac{1}{\mu_0}\pp{\grad\Bvec\cdot\Bvec - \p{\Bvec\cdot\del}\Bvec} \\
     \rho \pp{-\del\vvec\cdot\vvec + \deldot\p{\vvec\vvec} -\p{\deldot\vvec}\vvec} &+ \frac{1}{\mu_0}\pp{\grad\Bvec\cdot\Bvec - \deldot\p{\Bvec\Bvec} + \p{\deldot\Bvec} \Bvec} \\
     \rho \pp{-\del\vvec\cdot\vvec + \deldot\p{\vvec\vvec}} &+ \frac{1}{\mu_0}\pp{\grad\Bvec\cdot\Bvec - \deldot\p{\Bvec\Bvec}} \\
-\end{split}
-\]
+\end{split}\]
 since $\p{\deldot\Bvec}=0$ and $\p{\deldot\vvec}=0$. Substituting $v^2 = \frac{M_A B^2}{\rho\mu_0}$ into $\rho\del\vvec\cdot\vvec$, we get
-\[
-\begin{split}
+\[\begin{split}
     \rho\del\vvec\cdot\vvec &= \rho\del\p{\frac{M_A \Bvec}{\sqrt{\mu_0\rho}}}\cdot\p{\frac{M_A \Bvec}{\sqrt{\mu_0\rho}}} \\
     &= \frac{1}{\mu_0}\pp{\p{M_A\del\Bvec + \Bvec\del M_A}\cdot\Bvec M_A} \\
     &= \frac{1}{\mu_0}\p{M_A^2\grad\Bvec\cdot\Bvec + B^2 M_A\del M_A}. \\
-\end{split}
-\]
+\end{split}\]
 The left hand side of (\ref{eq:momentum-steady-state}) then becomes
-\[
-\begin{split}
+\[\begin{split}
     \deldot\p{\rho\vvec\vvec} &- \frac{1}{\mu_0}\p{M_A^2\grad\Bvec\cdot\Bvec + \Bvec M_A^2\cdot\del M_A} + \frac{1}{\mu_0}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}\deldot\p{\Bvec\Bvec} \\
     &= \deldot\p{\rho\vvec\vvec - \frac{\Bvec\Bvec}{\mu_0}} + \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2 M_A\del M_A \\
     &= \deldot\p{\frac{M_A^2}{\mu_0}\Bvec\Bvec - \frac{1}{\mu_0}\Bvec\Bvec} + \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2M_A\del M_A \\
-    &= \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} + \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2 M_A^2\del M_A \\
+    &= \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} + \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2 M_A^2\del M_A. \\
     %&= \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} \\
-\end{split}
-%\label{eq:momentum-LHS}
-\]
-Taking the right hand side of(\ref{eq:momentum-steady-state}), 
-\[
-\begin{split}
+    %\label{eq:momentum-LHS}
+\end{split}\]
+Making the same substitution on the right hand side of (\ref{eq:momentum-steady-state}),
+\[\begin{split}
     -\grad p -\rho\frac{\del v^2}{2} &= -\grad p -\frac{\rho}{2}\del\p{\frac{M_A^2 B^2}{\rho\mu_0}} \\
-    &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2}. \\
+    &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2} \\
     %\label{eq:momentum-RHS}
-\end{split}
-\]
-Combining all of the terms of (\ref{eq:momentum-steady-state}),
+\end{split}\]
+and combining all of the terms yields
+\[\begin{split}
+    \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &+ \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2 M_A\del M_A \\
+    &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2} \\
+    \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &+ \frac{1}{2\mu_0}\p{1-M_A^2}\grad B^2 - \frac{1}{2\mu_0}B^2\del M_A^2 \\
+    &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2} \\
+    \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &= - \grad p -\frac{1}{2\mu_0}\grad B^2. \\
+\end{split}\]
+The Alfv\'en Mach number squared can be simplified to $\alpha=M_A^2$:
 \begin{equation}
-    \begin{split}
-        \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &+ \frac{1}{\mu_0}\p{1-M_A^2}\p{\grad\Bvec\cdot\Bvec} - \frac{1}{\mu_0}B^2 M_A\del M_A \\
-        &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2} \\
-        \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &+ \frac{1}{2\mu_0}\p{1-M_A^2}\grad B^2 - \frac{1}{2\mu_0}B^2\del M_A^2 \\
-        &= -\grad p - \frac{1}{2\mu_0}\p{M_A^2 \del B^2 + B^2\del M_A^2} \\
-        \frac{1}{\mu_0}\deldot\pp{\p{M_A^2-1}\Bvec\Bvec} &= - \grad p -\frac{1}{2\mu_0}\grad B^2 \\
-        \deldot\pp{\p{1-\alpha}\Bvec\Bvec} &= \mu_0\del\p{p + \frac{B^2}{2\mu_0}} \\
-    \end{split}
+    \deldot\pp{\p{1-\alpha}\Bvec\Bvec} = \mu_0\del\p{p + \frac{B^2}{2\mu_0}}.
     \label{eq:deldotBB}
 \end{equation}
-where $\alpha=M_A^2$. Taking another substitution, $\Cvec = \p{1-\alpha}\Bvec$,
-\[
-\begin{split}
+Taking another substitution, $\Cvec = \p{1-\alpha}\Bvec$, the right hand side of (\ref{eq:deldotBB}) is expanded to
+\[\begin{split}
     \mu_0\del\p{p + \frac{B^2}{2\mu_0}} &= \deldot\p{\Cvec\Bvec} \\
     &= \p{\deldot\Cvec}\Bvec + \p{\Bvec\cdot\del}\Cvec \\
     &= \p{\grad \Cvec}\cdot\Bvec - \Bvec\cross\p{\delcross \Cvec} \\
@@ -150,102 +140,80 @@ where $\alpha=M_A^2$. Taking another substitution, $\Cvec = \p{1-\alpha}\Bvec$,
     &= -\del\alpha\p{\Bvec\cdot\Bvec} + \p{1-\alpha}\del\Bvec\cdot\Bvec - \Bvec\cross\p{\delcross \Cvec} \\
     &= \p{1-\alpha}\del\p{\frac{B^2}{2}} - B^2\del\alpha - \Bvec\cross\p{\delcross \Cvec} \\
     &= \del\pp{\p{1-\alpha}\frac{B^2}{2}} - \frac{B^2}{2}\del\alpha - \Bvec\cross\p{\delcross \Cvec}. \\
-\end{split}
-\]
-Therefore (\ref{eq:deldotBB}) becomes
+\end{split}\]
+Therefore, (\ref{eq:deldotBB}) becomes
 \begin{equation}
     \begin{split}
         \mu_0\pp{\grad\p{p + \frac{B^2}{2\mu_0} - \p{1-\alpha}\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha} &= -\Bvec\cross\p{\delcross \Cvec} \\
         \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha} &= -\Bvec\cross\p{\delcross \Cvec}. \\
+        \label{eq:B-cross-del-cross-C}
     \end{split}
 \end{equation}
-
-\noindent By breaking down $\Bvec$ and $\Cvec$ into their components, and noting that $\Bvec_t \cross \p{\delcross\Cvec}_t =0$ because there is no $z$-component of the gradient $\p{\frac{\partial}{\partial z}=0}$, the triple cross product $\Bvec\cross\p{\delcross\Cvec}$ becomes
-\begin{equation}
-    \begin{split}
-        \Bvec\cross\p{\delcross\Cvec} &= \p{\Bvec_t + B_z\zhat}\cross\pp{\p{\delcross\Cvec}_t + \p{\delcross\Cvec}_z} \\
-        &= \Bvec_t\cross \p{\delcross\Cvec}_z + B_z\zhat\cross\p{\delcross\Cvec}_t \\
-        &= \p{\grad A_z\cross\zhat}\cross \p{\delcross\Cvec}_z + B_z\zhat \cross \p{\grad C_z\cross\zhat} \\
-        &= -\p{\delcross\Cvec}_z\del A_z +  B_z\grad C_z. \\
-    \end{split}
-\end{equation}
-
+By breaking down $\Bvec$ and $\Cvec$ into their components, and noting that $\Bvec_t \cross \p{\delcross\Cvec}_t =0$ because there is no $z$-component of the gradient $\p{\frac{\partial}{\partial z}=0}$, the triple cross product $\Bvec\cross\p{\delcross\Cvec}$ becomes
+\[\begin{split}
+    \Bvec\cross\p{\delcross\Cvec} &= \p{\Bvec_t + B_z\zhat}\cross\pp{\p{\delcross\Cvec}_t + \p{\delcross\Cvec}_z} \\
+    &= \Bvec_t\cross \p{\delcross\Cvec}_z + B_z\zhat\cross\p{\delcross\Cvec}_t \\
+    &= \p{\grad A_z\cross\zhat}\cross \p{\delcross\Cvec}_z + B_z\zhat \cross \p{\grad C_z\cross\zhat} \\
+    &= -\p{\delcross\Cvec}_z\del A_z +  B_z\grad C_z. \\
+\end{split}\]
+Making use of $\deldot\Cvec=0$,
+\[\begin{split}
+    \deldot\Cvec = \deldot\pp{\p{1-\alpha}\p{\delcross\Avec}} &= 0 \\
+    \p{1-\alpha}\deldot \p{\delcross\Avec} + \p{\delcross\Avec}\cdot\del\p{1-\alpha} &= 0 \\
+    -\p{\grad A_z\cross\zhat}\cdot\grad{\alpha} = \grad A_z \cdot\grad\alpha &= 0 \\
+\end{split}\]
+the term $\p{\delcross\Cvec}_z$ can be written as
 \[\begin{split}
     \p{\delcross\Cvec}_z &= \delcross\p{1-\alpha}\Bvec_t \\
     &= \delcross\pp{\p{1-\alpha}\p{\delcross\Avec}_t} \\
     %&= \del\p{1-\alpha}\cross\p{\del A_z\cross\zhat} + \p{1-\alpha}\delcross \p{\del A_z\cross\zhat} \\
     &= -\del\alpha\cross\p{\del A_z\cross\zhat} + \p{1-\alpha}\delcross \p{\del A_z\cross\zhat} \\
     &= -\p{\del\alpha\cdot\zhat}\del A_z + \p{\del\alpha\cdot\del A_z}\zhat + \p{1-\alpha}\pp{\p{\deldot\zhat}\del A_z - \p{\deldot\del A_z}\zhat} \\
-    &= -\p{1-\alpha}\delsq A_z\zhat \\
+    &= -\p{1-\alpha}\delsq A_z\zhat. \\
 \end{split}\]
-
-
+The $B_z\grad C_z$ term can be written as
 \[\begin{split}
-    \deldot\Cvec = \deldot\pp{\p{1-\alpha}\p{\delcross\Avec}} &= 0 \\
-    \p{1-\alpha}\deldot \p{\delcross\Avec} + \p{\delcross\Avec}\cdot\del\p{1-\alpha} &= 0 \\
-    -\p{\grad A_z\cross\zhat}\cdot\grad{\alpha} = \grad A_z \cdot\grad\alpha &= 0 \\
+    B_z\grad C_z &= B_z\grad\pp{\p{1-\alpha}B_z} \\
+    &= B_z\pp{B_z\del\p{1-\alpha} + \p{1-\alpha}\grad B_z} \\
+    &= -B_z^2\grad\alpha + \p{1-\alpha}\grad\p{\frac{B_z^2}{2}} \\
+    &= -B_z^2\del\alpha + \grad\pp{\p{1-\alpha}\frac{B_z^2}{2}} + \frac{B_z^2}{2}\del\alpha \\
+    &= \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} - \frac{B_z^2}{2}\del\alpha,
 \end{split}\]
-
+which leads to the form of $\Bvec\cross\p{\delcross\Cvec}$ that we insert into (\ref{eq:B-cross-del-cross-C}):
 \begin{equation}
-    \begin{split}
-        B_z\grad C_z &= B_z\grad\pp{\p{1-\alpha}B_z} \\
-        &= B_z\pp{B_z\del\p{1-\alpha} + \p{1-\alpha}\grad B_z} \\
-        &= -B_z^2\grad\alpha + \p{1-\alpha}\grad\p{\frac{B_z^2}{2}} \\
-        &= -B_z^2\del\alpha + \grad\pp{\p{1-\alpha}\frac{B_z^2}{2}} + \frac{B_z^2}{2}\del\alpha \\
-        &= \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} - \frac{B_z^2}{2}\del\alpha
-    \end{split}
+    -\Bvec\cross\p{\delcross\Cvec} = -\pp{\p{1-\alpha}\delsq A_z} \del A_z - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha.
+    \label{eq:triple-cross-product}
 \end{equation}
-
-\begin{equation}
-    -\Bvec\cross\p{\delcross\Cvec} = -\pp{\p{1-\alpha}\delsq A_z} \del A_z - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha
-\end{equation}
-Once again replacing $A=A_z$,
+Once again replacing $A=A_z$ for simplicity, (\ref{eq:B-cross-del-cross-C}) becomes
 \[\begin{split}
     \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha}  &= -\pp{\p{1-\alpha}\delsq A} \del A - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha \\
     %\mu_0\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \p{\frac{B^2-B_z^2}{2}}\del\alpha  &= \pp{\p{1-\alpha}\delsq A}\del A - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} \\
     \mu_0\grad\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\pp{\p{1-\alpha}\delsq A}\del A + \p{\frac{B_z^2-B^2}{2}}\del\alpha \\
-    \mu_0\grad A\frac{d}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\pp{\p{1-\alpha}\delsq A}\del A + \p{\frac{B_z^2-B^2}{2}}\del A \frac{d\alpha}{d A} \\
-    \mu_0\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\p{1-\alpha}\delsq A + \p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
+    \mu_0\grad A\frac{d}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\pp{\p{1-\alpha}\delsq A}\del A + \p{\frac{B_z^2-B^2}{2}}\del A \frac{d\alpha}{d A}. \\
 \end{split}\]
-
+The $\del A$ term is then eliminated, and both sides are multiplied by $(1-\alpha)$:
 \[\begin{split}
     \mu_0\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\p{1-\alpha}\delsq A + \p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
     \mu_0\p{1-\alpha}\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\p{1-\alpha}^2\delsq A + \p{1-\alpha}\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
     \mu_0\frac{d}{d A}\pp{\p{1-\alpha}\p{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} \\
     &= -\p{1-\alpha}^2\delsq A + \p{1-\alpha}\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
-    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \frac{B^2}{2\mu_0}} = -\p{1-\alpha}^2\delsq A\\
-\end{split}
-\]
-
-Substituting $P_t'=\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}$, $A'=(1-\alpha)A$, and taking the special case $\alpha\equiv const.$,
-\[
-\begin{split}
-    \mu_0\frac{dP_t'}{dA} = \mu_0\frac{dP_t'}{dA'}\frac{dA'}{dA} &= -\p{1-\alpha}^2\delsq A \\
-    \mu_0\p{1-\alpha}\frac{dP_t'}{dA'} &= -\p{1-\alpha}\delsq A' \\
-    \mu_0\frac{dP_t'}{dA'} &= -\delsq A' \\
-\end{split}
-\]
-
-% \[\begin{split}
-%     P_t' &= \p{1-\alpha}p + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0} + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} \\
-%     &= \frac{A'}{A}p + \p{\frac{A'}{A}}^2\frac{B_z^2}{2\mu_0} + \alpha\frac{A'}{A}\frac{B^2}{2\mu_0} \\
-% \end{split}
-% \]
-% \[\begin{split}
-%     \frac{dP_t'}{dA'} &= \frac{p}{A} + \frac{A'}{A}\frac{dp}{dA'} - \frac{A'}{A^2}p\frac{dA}{dA'} + \frac{2}{A}\p{\frac{A'}{A}}\frac{B_z^2}{2\mu_0} + \p{\frac{A'}{A}}^2\frac{d}{dA'}\p{\frac{B_z^2}{2\mu_0}} \\
-%     &- 2\p{\frac{A'^2}{A^3}}\frac{dA}{dA'}\frac{B_z^2}{2\mu_0} + \frac{\alpha}{A}\frac{B^2}{2\mu_0} + \frac{A'}{A}\frac{B^2}{2\mu_0}\frac{d\alpha}{dA'} + \alpha\frac{A'}{A}\frac{d}{dA'}\p{\frac{B_z^2}{2\mu_0}} - \alpha\frac{A'}{A^2}\frac{dA}{dA'}\frac{B_z^2}{2\mu_0} \\
-% \end{split}
-% \]
-
-% \[\begin{split}
-%     \frac{dP_t'}{dA'} &= \frac{d}{dA'}\pp{\frac{A'}{A}p + \p{\frac{A'}{A}}^2\frac{B_z^2}{2\mu_0} + \alpha\frac{A'}{A}\frac{B^2}{2\mu_0}} + \frac{dA}{dA'}\pp{- \frac{A'}{A^2}p - 2\p{\frac{A'^2}{A^3}}\frac{B_z^2}{2\mu_0} - \alpha \frac{A'}{A^2}\frac{B_z^2}{2\mu_0}  } \\
-%     &+ \frac{p}{A} + \frac{2}{A}\p{\frac{A'}{A}}\frac{B_z^2}{2\mu_0} + \frac{2\alpha}{A}\p{\frac{A'}{A}}\frac{B^2}{2\mu_0} + \frac{A'}{A}\frac{B^2}{2\mu_0}\frac{d\alpha}{dA'} \\ 
-% \end{split}
-% \]
-
+    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \frac{B^2}{2\mu_0}} = -\p{1-\alpha}^2\delsq A. \\
+\end{split}\]
+The transverse pressure $P_t'$ is $\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}$, therefore substituting $A'=(1-\alpha)A$ and taking the special case $\alpha\equiv const.$, we arrive at
+\begin{equation}
+    \begin{split}
+        \mu_0\frac{dP_t'}{dA} &= -\p{1-\alpha}^2\delsq A \\
+        \mu_0\frac{dP_t'}{dA'}\frac{dA'}{dA} &= -\p{1-\alpha}\delsq A' \\
+        \mu_0\p{1-\alpha}\frac{dP_t'}{dA'} &= -\p{1-\alpha}\delsq A' \\
+        \mu_0\frac{dP_t'}{dA'} &= -\delsq A' \\
+        \mu_0\frac{d}{dA'}\pp{\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}} &= -\delsq A', \\
+    \end{split}
+    \label{eq:extended-deriv}
+\end{equation}
+which is the extended form used in the GS-based reconstruction and detection of SFRs with significant remaining flow. Note, when $\alpha\rightarrow 0$, (\ref{eq:extended-deriv}) becomes (\ref{eq:GS}).
 
 \section{Automated GS-based detection of SFRs}\label{sec:GS-detection}
-In both the original and the GS-type equations, the transverse pressure $P_t$, and its equivalent $P_t'$, are single variable functions of the magnetic flux function $A$ ($A'$ for the GS-type with $\alpha\equiv const$). With this feature, one can recover the 2D cross-section of a flux rope structure from the 1D spacecraft data by solving the initial value problem based on the GS equation, i.e., by carrying out the GS reconstruction procedures \citep{Hau:1999, HuSonnerup:2002, Hu:2017}. The GS-based techniques in this study consist of the GS-type reconstruction and the extended GS-based automated detection. Considering the complicated environment from the solar wind to the magnetosheath, we adopt the GS-type reconstruction in this study for selected events only.
+In both the original and the GS-type equations, the transverse pressure $P_t$, and its equivalent $P_t'$, are single variable functions of the magnetic flux function $A$ ($A'$ for the GS-type with $\alpha\equiv const$). With this feature, one can recover the 2D cross-section of a flux rope structure from the 1D spacecraft data by solving the initial value problem based on the GS equation, i.e., by carrying out the GS reconstruction procedures \citep{Hau:1999, HuSonnerup:2002, Hu:2017}. The GS-based techniques in this study consist of the GS-type reconstruction and the extended GS-based automated detection. Considering the complicated environment from the solar wind to the magnetosheath, the GS-type reconstruction is adopted in this study for selected events.
 
 A cross section of a cylindrical flux rope structure is fully characterized by the 2D scalar flux function $A(x, y)$, and the field-line invariants $\p{B_z,J_z,p, P_t}$ vary among the nested cylindrical flux surfaces while remaining constant on each distinct surface with a distinct $A$ value \citep{Hu:2018}. As a spacecraft passes through the cross section of a magnetic flux rope with closed transverse field lines, it crosses the same set of magnetic field lines twice, the second time being in reverse order as the first half of the crossing. Therefore, the measured magnetic flux function $A$ associated with the field lines traversed by the spacecraft is double-folded, meaning there is a turning point at which an extremum in $A$ is reached. These features, especially the double-folding pattern, are the basis for the GS reconstruction-based identification algorithm \citep{Hu:2018}. Figure \ref{fig:GSreconstruction_Hu2017} shows diagram of a reconstruction of a magnetic cloud event and the associated flux rope structure. The cross section from the reconstruction algorithm can be seen as well as its relation to the magnetic field lines of the flux rope structure. A more detailed description of the implementation \citep{Hu:2018}, including a flowchart of the flux rope detection algorithm, can be found in Appendix \ref{appendix:gs-flowchart}, and online\footnote{\url{fluxrope.info/flowchart.html}}.
 
@@ -257,7 +225,7 @@ A cross section of a cylindrical flux rope structure is fully characterized by t
 \end{figure}
 
 % Determination of the cylindrical z-axes
-The GS-based algorithm starts by moving a window continually through an entire data segment with variable window sizes in turn, ranging from the minimum duration of approximately 10 data points with cadence $\Delta t$, i.e. 10$\Delta t$, to the maximum duration of 343 data points to cover a wide range of SFR duration, while taking into account limited computing resources. The maximum duration corresponds to approximately 17 minutes for the THEMIS data, and 25 minutes for the MMS data. The in situ magnetic field and plasma data from a specified window of time are first transformed into the co-moving frame, notably the de Hoffmann-Teller frame \citep{deHoffman-Teller:1950}. Through a trial-and-error process, the optimal orientation of the $z$-axis is determined. A trial $z$-axis is represented by the azimuthal and polar angles, $\phi$ and $\theta$, in the GSE coordinate system. The azimuthal angle $\phi$ is the longitude of the SFR $z$-axis, which measures the angle between the GSE $X$-direction and the projection of the $z$-axis onto the $XY$-plane. The polar angle $\theta$ is the angle between the SFR $z$-axis and the $Z$-direction. To do so, we select trial values for $\phi$ and $\theta$, and calculate the transverse pressure $P_t'$ along the spacecraft path, as shown in Equation (\ref{eq:GSextended}). The plot of $P_t'$ versus $A'$ may have a turning point where $P_t'$ along the spacecraft path splits into two parts, with an extreme $A'$ value near this turning point, typically for an SFR structure. This is where the magnetic field $B_y$ component changes sign because of the field line geometry of a helical structure. Figure \ref{fig:Pt-vs-A} represents such a $P_t'$ versus $A'$ plot, with two distinct portions joining near a turning point with a minimum $A'$ value. We evaluate the quality of the folding (or overlapping) of the two parts of $P_t'$ versus $A'$ by two metrics, $R_{diff}$ (the point-wise difference residue between the two parts) and $R_{fit}$ (a residue of the fitting function $P_t'(A')$ as illustrated by the solid black curve). These metrics are used to check how well the two parts fold onto each other, provided that such a turning point exists. The threshold conditions, $R_{diff}\lesssim 0.2$ and $R_{fit}\lesssim 0.2$ for these metrics, are selected empirically to guarantee good double-folding quality \citep{Hu:2018}. We are able to find the optimal orientation of the $z$-axis of the SFR by going through iterations of $\phi$ and $\theta$ until the minimum residue values are found. Once the minimum residues satisfying the threshold conditions are found, the corresponding optimal $z$-axis orientation and event interval are recorded as an SFR candidate.
+The GS-based algorithm starts by moving a window continually through an entire data segment with variable window sizes in turn, ranging from the minimum duration of approximately 10 data points with cadence $\Delta t$, i.e. 10$\Delta t$, to the maximum duration of 343 data points to cover a wide range of SFR duration, while taking into account limited computing resources. The maximum duration corresponds to approximately 17 minutes for the THEMIS data, and 25 minutes for the MMS data. The in situ magnetic field and plasma data from a specified window of time are first transformed into the co-moving frame, notably the de Hoffmann-Teller frame \citep{deHoffman-Teller:1950}. Through a trial-and-error process, the optimal orientation of the $z$-axis is determined. A trial $z$-axis is represented by the azimuthal and polar angles, \gls{phi} and \gls{theta}, in the GSE coordinate system. The azimuthal angle $\phi$ is the longitude of the SFR $z$-axis, which measures the angle between the GSE $X$-direction and the projection of the $z$-axis onto the $XY$-plane. The polar angle $\theta$ is the angle between the SFR $z$-axis and the $Z$-direction. To do so, the trial values for $\phi$ and $\theta$ are selected, and calculate the transverse pressure $P_t'$ along the spacecraft path, as shown in Equation (\ref{eq:GSextended}). The plot of $P_t'$ versus $A'$ may have a turning point where $P_t'$ along the spacecraft path splits into two parts, with an extreme $A'$ value near this turning point, typically for an SFR structure. This is where the magnetic field $B_y$ component changes sign because of the field line geometry of a helical structure. Figure \ref{fig:Pt-vs-A} represents such a $P_t'$ versus $A'$ plot, with two distinct portions joining near a turning point with a minimum $A'$ value. I evaluate the quality of the folding (or overlapping) of the two parts of $P_t'$ versus $A'$ by two metrics, \gls{Rdiff} (the point-wise difference residue between the two parts) and \gls{Rfit} (a residue of the fitting function $P_t'(A')$ as illustrated by the solid black curve). These metrics are used to check how well the two parts fold onto each other, provided that such a turning point exists. The threshold conditions, $R_{diff}\lesssim 0.2$ and $R_{fit}\lesssim 0.2$ for these metrics, are selected empirically to guarantee good double-folding quality \citep{Hu:2018}. I are able to find the optimal orientation of the $z$-axis of the SFR by going through iterations of $\phi$ and $\theta$ until the minimum residue values are found. Once the minimum residues satisfying the threshold conditions are found, the corresponding optimal $z$-axis orientation and event interval are recorded as an SFR candidate.
 
 % \begin{figure}
 %     \centering
@@ -275,7 +243,7 @@ The GS-based algorithm starts by moving a window continually through an entire d
 
 % The data are then used to calculate the transverse pressure $P_t'(A')$ as a function of the scalar flux function, $A'$. If the $P_t'$ versus $A'$ is double folded through a flux rope interval, then two metrics, $R_{diff}$ (the point-wise difference between the two folds) and $R_{fit}$ (a fitting residue of $P_t'(A')$), are used to check the double-folding quality and the shape of $P_t'(A')$. The threshold values for these metrics are selected empirically to guarantee good flux rope quality \citep{Hu:2018}, and if the thresholds are met, the event is recorded as an event candidate. If the thresholds are not met, the $z$-axis will go through its next iteration until the thresholds are met.
 
-After the initial detection of SFR candidates, the list of initial candidates is refined. The records are further classified based on the Wal\'en test slope $w$, which is the slope of the linear regression between $\mathbf{V_{sw}} - \mathbf{V_{HT}}$ and $\mathbf{V_A}$. Records with $|w|\leq0.3$ are quasi-static SFRs and thus saved directly. Records with $|w|>0.3$, except for when the correlation coefficient $r$ between the aforementioned two velocities ($\mathbf{V_{sw}} - \mathbf{V_{HT}}$ and $\mathbf{V_A}$) is $|r|\geq 0.8$ and $\langle M_A\rangle \leq 0.9$, are removed. These conditions ensure that the remaining plasma flow is aligned with the local magnetic field, and also to avoid a singularity in Equation (\ref{eq:GSextended}) at $\alpha=1$. Events with $\alpha>1$ are rare, but they are also removed, so that the events remaining are sub-Alfv\'enic. We also remove events from the initial candidate list if the candidates have a turning point within $5\Delta t$ (turn time) of the turning point of another candidate with a smaller $R_{diff}$, as these could be the same overlapping structures. Table \ref{tab:thresholds} lays out the threshold conditions as utilized in the post-processing of the GS-based detection event list \citep{Chen:2020, Chen:2021, Chen:2022}. The duration of the search windows does not exceed 343$\Delta t$ ($\sim 25.733$ minutes for MMS and $\sim 24.553$ minutes for THEMIS) due to computational time constraints. The detection algorithm was performed for some time periods with search window size up to 388 points in duration; however, the search yielded very few (generally less than 3) additional event counts after the post-processing steps. This was due to the step of making sure there is no overlap between SFR candidates, which prioritizes smaller duration candidates. Therefore, with the search algorithm taking a significant amount of time to run for longer search windows and yielding very few results, it was decided to stop the search at the maximum window size of $343\Delta t$. The PyGS software used to reconstruct the 2D cross-section of the events can be found at \url{https://github.com/PyGSDR/PyGS}.
+After the initial detection of SFR candidates, the list of initial candidates is refined. The records are further classified based on the Wal\'en test slope \gls{walen}, which is the slope of the linear regression between $\mathbf{V_{sw}} - \mathbf{V_{HT}}$ and $\mathbf{V_A}$. Records with $|w|\leq0.3$ are quasi-static SFRs and thus saved directly. Records with $|w|>0.3$, except for when the correlation coefficient $r$ between the aforementioned two velocities ($\mathbf{V_{sw}} - \mathbf{V_{HT}}$ and $\mathbf{V_A}$) is $|r|\geq 0.8$ and $\langle M_A\rangle \leq 0.9$, are removed. These conditions ensure that the remaining plasma flow is aligned with the local magnetic field, and also to avoid a singularity in Equation (\ref{eq:GSextended}) at $\alpha=1$. Events with $\alpha>1$ are rare, but they are also removed, so that the events remaining are sub-Alfv\'enic. The algorithm also removes events from the initial candidate list if the candidates have a turning point within $5\Delta t$ (turn time) of the turning point of another candidate with a smaller $R_{diff}$, as these could be the same overlapping structures. Table \ref{tab:thresholds} lays out the threshold conditions as utilized in the post-processing of the GS-based detection event list \citep{Chen:2020, Chen:2021, Chen:2022}. The duration of the search windows does not exceed 343$\Delta t$ ($\sim 25.733$ minutes for MMS and $\sim 24.553$ minutes for THEMIS) due to computational time constraints. The detection algorithm was performed for some time periods with search window size up to 388 points in duration; however, the search yielded very few (generally less than 3) additional event counts after the post-processing steps. This was due to the step of making sure there is no overlap between SFR candidates, which prioritizes smaller duration candidates. Therefore, with the search algorithm taking a significant amount of time to run for longer search windows and yielding very few results, it was decided to stop the search at the maximum window size of $343\Delta t$. The PyGS software used to reconstruct the 2D cross-section of the events can be found at \url{https://github.com/PyGSDR/PyGS}.
 \input{Tables/thresholds}
 
 \begin{figure}[ht!]
@@ -285,10 +253,11 @@ After the initial detection of SFR candidates, the list of initial candidates is
     \label{fig:GSreconstruction_Hu2015}
 \end{figure}
 
-%Such an extended version searches FRs including those with significant field-aligned flows as they also meet the broad definition of magnetic flux ropes, \textit{i.e}., having twisted field lines around the central axis \citep{Chen:2021}. Therefore, the Alfv\'enicity of these dynamic structures is not negligible, which will be characterized by the $M_A$ and the Wal\'en test slope.
-
 \section{2D Reconstructions of cross-sections}
-Figures \ref{fig:reconstruction-Nov2019} and \ref{fig:reconstruction-June2009} are examples of the reconstruction of 2D cross-sections of selected flux rope events, both in the magnetosheath. These were reconstructed using the PyGS package. The black lines indicate the transverse magnetic field lines, and the color background indicates the axial field lines $B_z$ with the strength denoted by the color bar. The flux rope structure is confirmed by the closed field lines region and unipolar $B_z$. The white dot indicates the maximum $B_z$. The white arrows denote the transverse field lines ($B_t$) along the path of the spacecraft ($y=0$), and the green arrows along this path denote the remaining flow velocity. The white contour indicates the area of the reconstruction done from spacecraft data, while the area outside the white contour is reconstructed from extrapolation. The associated time series are displayed below the event reconstructions. The event in Figure \ref{fig:reconstruction-Nov2019} has a Wal\'en slope of -0.09, and the event in Figure \ref{fig:reconstruction-June2009} has a Wal\'en test slope of 0.002. This indicates that the structures are static, where the remaining flow vectors (green) along the spacecraft path in the cross-section have little alignment with the transverse magnetic field line vectors (white arrows). The closed, transverse field lines, and the $B_t$ vectors along the spacecraft path show that the reconstruction in Figure \ref{fig:reconstruction-Nov2019} is a right-handed event, while the structure in Figure \ref{fig:reconstruction-June2009} is a left-handed flux rope. The maximum $B_z$ of the structure in Figure \ref{fig:reconstruction-Nov2019} is 11.85 nT, and that of the structure in Figure \ref{fig:reconstruction-June2009} is 18.21 nT.
+Figures \ref{fig:reconstruction-Nov2019} and \ref{fig:reconstruction-June2009} are examples of the reconstruction of 2D cross-sections of selected flux rope events, both in the magnetosheath. These were reconstructed using the PyGS package. The black lines indicate the transverse magnetic field lines, and the color background indicates the axial field $B_z$ with the strength denoted by the color bar. The flux rope structure is confirmed by the closed field lines region and unipolar $B_z$. The white dot indicates the maximum $B_z$. The white arrows denote the transverse magnetic field lines ($\Bvec_t$) along the path of the spacecraft ($y=0$), and the green arrows along this path denote the remaining flow velocity. The white contour encloses the area of the reconstruction done from spacecraft data, while the area outside the white contour is reconstructed from extrapolation.
+
+%The associated time series are displayed below the event reconstructions.
+The event in Figure \ref{fig:reconstruction-Nov2019} has a Wal\'en slope of -0.09, and the event in Figure \ref{fig:reconstruction-June2009} has a Wal\'en test slope of 0.002. This indicates that the structures are static, where the remaining flow vectors (green) along the spacecraft path in the cross-section have little alignment with the transverse magnetic field line vectors (white arrows). The closed, transverse field lines, and the $B_t$ vectors along the spacecraft path show that the reconstruction in Figure \ref{fig:reconstruction-Nov2019} is a right-handed event, while the structure in Figure \ref{fig:reconstruction-June2009} is a left-handed flux rope. The maximum $B_z$ of the structure in Figure \ref{fig:reconstruction-Nov2019} is 11.85 nT, and that of the structure in Figure \ref{fig:reconstruction-June2009} is 18.21 nT.
 
 \begin{figure}
     \centering
@@ -334,7 +303,7 @@ Table \ref{tab:stats-GS} summarizes the statistical values for the events identi
 \end{table}
 
 % histograms of GS parameters: alpha, z-axis, flux
-The GS-based method can generate a set of unique physical parameters \citep{Hu:2017} as summarized in Table \ref{tab:stats-GS-only}. They include the approximate axial magnetic flux, $\Phi_z$, a product of $\langle B_z\rangle$ and $\pi(\textnormal{scale size}/2)^2$, the poloidal magnetic flux per meter, $|A_m| = \textnormal{max}(|A|)$, and the approximate helicity density per meter $\Phi_z|A_m|$ \citep{Hu:2014}. In addition, the statistics for the proportionality parameter $\alpha$ are also presented. It generally indicates a modest level of Alfv\'enicity in both the solar wind and in the magnetosheath. The last two rows in the top and bottom blocks of Table \ref{tab:stats-GS-only} provide a proxy to the estimated magnetic helicity per unit volume. No clear differences are seen in the distributions and statistics for $\Phi_z$ and $|A_m|$ between the two regions.
+The GS-based method can generate a set of unique physical parameters \citep{Hu:2017} as summarized in Table \ref{tab:stats-GS-only}. They include the approximate axial magnetic flux,\gls{axial flux}, a product of $\langle B_z\rangle$ and $\pi(\textnormal{scale size}/2)^2$, the poloidal magnetic flux per meter, $|A_m| = \textnormal{max}(|A|)$, and the approximate helicity density per meter $\Phi_z|A_m|$ \citep{Hu:2014}. In addition, the statistics for the proportionality parameter $\alpha$ are also presented. It generally indicates a modest level of Alfv\'enicity in both the solar wind and in the magnetosheath. The last two rows in the top and bottom blocks of Table \ref{tab:stats-GS-only} provide a proxy to the estimated magnetic helicity per unit volume. No clear differences are seen in the distributions and statistics for $\Phi_z$ and \gls{poloidal flux} between the two regions.
 \begin{table}[ht!]
     \caption[Statistical values for the physical quantities of SFR structures identified solely via the GS-based method]{Statistical values for the physical quantities characterizing the SFR structures identified solely via the GS-based method in the two regions. Top: magnetosheath; bottom: solar wind.}
     \centering
@@ -382,7 +351,7 @@ As described in Section \ref{sec:GS-detection}, the Wal\'en test slope $w$ is us
     \label{fig:walen-slope-20191109}
 \end{figure}
 
-The distributions of the reduced cross helicity and residual energy for all identified events with the GS-based reconstruction identification algorithm are shown in Figure \ref{fig:mhd_histogram-GS}. Like Figure \ref{fig:mhd_histogram-wavelet} (in Section \ref{sec:wavelet-results}), Figure \ref{fig:mhd_histogram-GS} has a flatter distributions of reduced cross helicity $\sigma_c$ in the magnetosheath than in the solar wind. Unlike the analogous distributions in Figure \ref{fig:mhd_histogram-wavelet}, Figure \ref{fig:mhd_histogram-GS} shows that for the GS-based analysis result, there are nearly no events with $\sigma_r>0$. This is likely due to the intrinsic differences between the two methods. With the GS-based method, we can evaluate the Alfv\'enicity of the structures with the Wal\'en test slope. Table \ref{tab:walenTest-table} summarizes the classification of the events with the Wal\'en test slope. There is a slightly higher relative number of events with Wal\'en slope $|w|>0.3$ in the magnetosheath than in the solar wind. The majority (5088) of the 7689 events from the GS-based algorithm in the magnetosheath have Wal\'en test slopes $|w|\leq 0.3$, and 2601 events have Wal\'en slopes $|w|>0.3$. 1067 events of the 3476 GS-based algorithm events in the solar wind have $|w|>0.3$, which is a slightly lower proportion compared to that in the magnetosheath.
+The distributions of the reduced cross helicity and residual energy for all identified events with the GS-based reconstruction identification algorithm are shown in Figure \ref{fig:mhd_histogram-GS}. Like Figure \ref{fig:mhd_histogram-wavelet} (in Section \ref{sec:wavelet-results}), Figure \ref{fig:mhd_histogram-GS} has a flatter distributions of reduced cross helicity $\sigma_c$ in the magnetosheath than in the solar wind. Unlike the analogous distributions in Figure \ref{fig:mhd_histogram-wavelet}, Figure \ref{fig:mhd_histogram-GS} shows that for the GS-based analysis result, there are nearly no events with $\sigma_r>0$. This is likely due to the intrinsic differences between the two methods. With the GS-based method, one can evaluate the Alfv\'enicity of the structures with the Wal\'en test slope. Table \ref{tab:walenTest-table} summarizes the classification of the events with the Wal\'en test slope. There is a slightly higher relative number of events with Wal\'en slope $|w|>0.3$ in the magnetosheath than in the solar wind. The majority (5088) of the 7689 events from the GS-based algorithm in the magnetosheath have Wal\'en test slopes $|w|\leq 0.3$, and 2601 events have Wal\'en slopes $|w|>0.3$. 1067 events of the 3476 GS-based algorithm events in the solar wind have $|w|>0.3$, which is a slightly lower proportion compared to that in the magnetosheath.
 
 \begin{figure}
     \centering
@@ -416,7 +385,7 @@ It can be seen that events with a high Alfv\'en Mach number (and thus proportion
 \end{figure}
 
 \section{Flow velocities and orientation of SFRs}
-Lastly, a representation of the average flow velocities of the identified event intervals, i.e., $\mathbf{V_{HT}}$ vectors, is shown in Figure \ref{fig:VHT-xy}. For the identified SFR structures, we find that the corresponding flow velocities in the solar wind are fairly uniform and along the Sun-Earth direction; however, in the magnetosheath the flows appear to be largely deflected toward the duskside flank. Therefore the structures near the flanks (downstream of the quasi-perpendicular portion of the bow shock) ought to have elongated cross sections, resulting in large scale sizes. It is likely that while the structures may be compressed by the bow shock in the dimension along the normal direction of the bow shock, they may experience stretching along the dimension in the direction of the bulk flows, i.e., approximately perpendicular to the normal direction. This explains why some structures in the magnetosheath have large scale sizes, for instance, larger than the typical width of the magnetosheath itself.
+Lastly, a representation of the average flow velocities of the identified event intervals, i.e., $\mathbf{V_{HT}}$ vectors, is shown in Figure \ref{fig:VHT-xy}. For the identified SFR structures, I find that the corresponding flow velocities in the solar wind are fairly uniform and along the Sun-Earth direction; however, in the magnetosheath the flows appear to be largely deflected toward the duskside flank. Therefore the structures near the flanks (downstream of the quasi-perpendicular portion of the bow shock) ought to have elongated cross sections, resulting in large scale sizes. It is likely that while the structures may be compressed by the bow shock in the dimension along the normal direction of the bow shock, they may experience stretching along the dimension in the direction of the bulk flows, i.e., approximately perpendicular to the normal direction. This explains why some structures in the magnetosheath have large scale sizes, for instance, larger than the typical width of the magnetosheath itself.
 
 \begin{figure}
     \centering
