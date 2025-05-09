@@ -1,11 +1,12 @@
 % Be sure to include the Heading Appendix A: before you type the name of the Appendix.
+\chapter{Appendix A: Summary of observation intervals}\label{appendix:observation-periods}
 
 % Appendices should appear at the very end of your thesis. Make sure to label each Appendix with a letter starting with "A". Any tables and/or figures located in the appendix should be labeled accordingly. For example, below is figure A.1 because it is the first figure that appears in Appendix A.
 
-\chapter{Appendix A: Summary of observation intervals}\label{appendix:observation-periods}
 %If you add another appendix, copy and paste this line, but update it to B instead of A.
 \renewcommand{\thechapter}{A}
-\setcounter{table}{0} 
+\setcounter{table}{0}
+\renewcommand{\thetable}{A.\arabic{table}}
 
 % Magnetosheath
 \begin{landscape}
@@ -20,5 +21,11 @@
 \begin{spacing}{.5}
     \input{Tables/sw_observations}
     \label{tab:sw-observations}
+\end{spacing}
+\end{landscape}
+
+\begin{landscape}
+\begin{spacing}{.5}
+    \input{Tables/coordinated_intervals}
 \end{spacing}
 \end{landscape}
