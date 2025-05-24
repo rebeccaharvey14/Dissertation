@@ -1,6 +1,6 @@
 \chapter{Chapter 3. Wavelet analysis as a single-spacecraft method}
 
-Single-spacecraft measurements have been used in the identification of small-scale magnetic structures \citep{Pecora:2019, Telloni:2012, Hu:2018, Zheng:2018, Zhao:2020}. The time series data can be treated as a spatial snapshot due to the effective stationary state of the plasma medium traversed by a spacecraft relative to the fast-moving solar wind. Time series data are transformed directly to spatial distributions \citep{Taylor:1938}. Therefore, time-frequency transforms, such as wavelet transforms, are conceivably useful for analyzing features of in situ spacecraft time series at different frequencies over time \citep{Torrence:1998}. Specifically the power spectra associated with a number of selected MHD quantities are derived to characterize the underlying magnetic structures.
+Single-spacecraft measurements have been used in the identification of small-scale magnetic structures \citep{Pecora:2019, Telloni:2012, Hu:2018, Zheng:2018, Zhao:2020}. The time series data can be treated as a spatial snapshot due to the effective stationary state of the plasma medium traversed by a spacecraft relative to the fast-moving solar wind. Time series data are transformed directly to spatial distributions \citep{Taylor:1938}. Therefore, time-frequency transforms, such as wavelet transforms, are conceivably useful for analyzing features of \textit{in situ} spacecraft time series at different frequencies over time \citep{Torrence:1998}. Specifically the power spectra associated with a number of selected MHD quantities are derived to characterize the underlying magnetic structures.
 
 \section{Wavelet transforms}
 Wavelet transforms are used to analyze time series with non-stationary power at different frequencies \citep{Torrence:1998} using non-orthogonal wavelet basis functions. Assuming a continuous signal as a function of time $t$, $x=x(t)$, the continuous wavelet transform is defined as
@@ -106,7 +106,7 @@ where $S_{YZ}(k)$ is one element of the reduced magnetic power spectral density 
  \begin{equation}
     \sigma_r(s,t) = \frac{W_{kin}(s,t) - W_{mag}(k,t)}{W_{kin}(s,t) + W_{mag}(s,t)} .
 \end{equation}
-since $\kvec \parallel \Vvec_0$ \citep{Zhao:2021, Horbury:2008, Taylor:1938}, where $\Vvec_0$ is the average plasma velocity. Equation \ref{eq:sigm-st} only shows the first term of the trace of the power spectrum because the radial component is dominant over the tangential component at 1 AU.
+since $\kvec \parallel \Vvec_0$ \citep{Zhao:2021, Horbury:2008, Taylor:1938}, where $\Vvec_0$ is the average plasma velocity. Equation (\ref{eq:sigm-st}) only shows the first term of the trace of the power spectrum because the radial component is dominant over the tangential component at 1 AU.
 
 
 % \begin{equation}
