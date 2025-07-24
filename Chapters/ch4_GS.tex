@@ -185,18 +185,21 @@ which leads to the form of $\Bvec\cross\p{\delcross\Cvec}$ that we insert into (
 \end{equation}
 Once again replacing $A=A_z$ for simplicity, (\ref{eq:B-cross-del-cross-C}) becomes
 \[\begin{split}
-    \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha}  &= -\pp{\p{1-\alpha}\delsq A} \del A - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} + \frac{B_z^2}{2}\del\alpha \\
+    \mu_0\pp{\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \frac{B^2}{2\mu_0}\del\alpha} = -\pp{\p{1-\alpha}\delsq A}& \del A \\
+    - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2}& + \frac{B_z^2}{2}\del\alpha \\
     %\mu_0\grad\p{p + \alpha\frac{B^2}{2\mu_0}} + \p{\frac{B^2-B_z^2}{2}}\del\alpha  &= \pp{\p{1-\alpha}\delsq A}\del A - \frac{1}{2}\del\pp{\p{1-\alpha}B_z^2} \\
-    \mu_0\grad\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\pp{\p{1-\alpha}\delsq A}\del A + \p{\frac{B_z^2-B^2}{2}}\del\alpha \\
-    \mu_0\grad A\frac{d}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\pp{\p{1-\alpha}\delsq A}\del A + \p{\frac{B_z^2-B^2}{2}}\del A \frac{d\alpha}{d A}. \\
+    \mu_0\grad\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} = -\pp{\p{1-\alpha}\delsq A}&\del A + \p{\frac{B_z^2-B^2}{2}}\del\alpha \\
+    \mu_0\grad A\frac{d}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} = -\pp{\p{1-\alpha}\delsq A}&\del A + \p{\frac{B_z^2-B^2}{2}}\del A \frac{d\alpha}{d A}. \\
 \end{split}\]
 The $\del A$ term is then eliminated, and both sides are multiplied by $(1-\alpha)$:
 \[\begin{split}
-    \mu_0\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\p{1-\alpha}\delsq A + \p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
-    \mu_0\p{1-\alpha}\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} &= -\p{1-\alpha}^2\delsq A + \p{1-\alpha}\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
-    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}\p{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} \\
-    &= -\p{1-\alpha}^2\delsq A + \p{1-\alpha}\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
-    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \frac{B^2}{2\mu_0}} = -\p{1-\alpha}^2\delsq A. \\
+    \mu_0\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} = -\p{1-\alpha}&\delsq A + \p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
+    \mu_0\p{1-\alpha}\frac{d}{d A}\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} = -\p{1-\alpha}&^2\delsq A \\
+    + \p{1-\alpha}&\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
+    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}\p{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}}} + \mu_0\frac{d\alpha}{dA}&\pp{p + \alpha\frac{B^2}{2\mu_0} + \p{1-\alpha}\frac{B_z^2}{2\mu_0}} \\
+    = -\p{1-\alpha}^2\delsq A &+ \p{1-\alpha}\p{\frac{B_z^2-B^2}{2}}\frac{d\alpha}{dA} \\
+    \mu_0\frac{d}{d A}\pp{\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}} &+ \mu_0\frac{d\alpha}{dA}\pp{p + \frac{B^2}{2\mu_0}} \\
+    = -\p{1-\alpha}^2\delsq A&.
 \end{split}\]
 The transverse pressure $P_t'$ is $\p{1-\alpha}p + \alpha\p{1-\alpha}\frac{B^2}{2\mu_0} + \p{1-\alpha}^2\frac{B_z^2}{2\mu_0}$, therefore substituting $A'=(1-\alpha)A$ and taking the special case $\alpha\equiv const.$, we arrive at
 \begin{equation}
@@ -308,7 +311,7 @@ Table \ref{tab:stats-GS} summarizes the statistical values for the events identi
 
 % histograms of GS parameters: alpha, z-axis, flux
 The GS-based method can generate a set of unique physical parameters \citep{Hu:2017} as summarized in Table \ref{tab:stats-GS-only}. They include the approximate axial magnetic flux, \gls{axial flux}, a product of $\langle B_z\rangle$ and $\pi(\textnormal{scale size}/2)^2$, the poloidal magnetic flux per meter, $|A_m| = \textnormal{max}(|A|)$, and the approximate helicity density per meter $\Phi_z|A_m|$ \citep{Hu:2014}. In addition, the statistics for the proportionality parameter $\alpha$ are also presented. It generally indicates a modest level of Alfv\'enicity in both the solar wind and in the magnetosheath. The last two rows in the top and bottom blocks of Table \ref{tab:stats-GS-only} provide a proxy to the estimated magnetic helicity per unit volume. No clear differences are seen in the distributions and statistics for $\Phi_z$ and \gls{poloidal flux} between the two regions.
-\begin{table}[ht!]
+\begin{table}[hb!]
     \caption[Statistical values for the physical quantities of SFR structures identified solely via the GS-based method]{Statistical values for the physical quantities characterizing the SFR structures identified solely via the GS-based method in the two regions. Top: magnetosheath; bottom: solar wind.}
     \centering
     \input{Tables/stats_GS_only}

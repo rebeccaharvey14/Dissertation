@@ -13,10 +13,12 @@
 \usepackage{array} %To allow creating arrays. 
 \providecommand\phantomsection{} %This command allows you to make phantom sections that have no title but are still included in the Table of Contents such as the epigraph.
 \usepackage[all]{nowidow} %This prevents widow/orphan lines
-\usepackage{tikz}%This package helps to anchor the seal on the title page to the student name
-\usetikzlibrary{tikzmark}%This is part of the tikz package
+\usepackage{tikz} %This package helps to anchor the seal on the title page to the student name
+\usetikzlibrary{tikzmark} %This is part of the tikz package
 \usepackage{lscape,longtable}
 \usepackage{multirow,multicol}
+\usepackage{wrapfig}
+\usepackage{rotating}
 
 %Creating an Interlude Environment in order to NOT count or number a certain page such as the copyright page.
 \newenvironment{interlude}{
@@ -29,7 +31,7 @@
 %The following package and lines can be used to format and create a list of symbols, equations, abbreviations, etc. The example actually used in this template is the \glossaries package, but you may also use this \nomencl package if desired.
 \usepackage[intoc]{nomencl}
 \makenomenclature
-\renewcommand{\nomname}{List of Symbols}
+\renewcommand{\nomname}{List of symbols}
 
 % This is to ensure the page numbers are centered and at the bottom.
 \usepackage{fancyhdr}
@@ -67,7 +69,7 @@
 
 
 %This formats the Table of contents title
-\renewcommand{\contentsname}{\hspace*{\fill}\bfseries\large Table of Contents\hspace*{\fill}}   
+\renewcommand{\contentsname}{\hspace*{\fill}\bfseries\large Table of contents\hspace*{\fill}}   
 
 
 \renewcommand{\cftbeforetoctitleskip}{-0.25in}  
@@ -83,10 +85,10 @@
 %\renewcommand{\chaptername}{CHAPTER}
 
 %Hopefully this reformats the List of Figures Title
-\renewcommand{\listfigurename}{\hspace*{\fill}\bfseries\large List of Figures\hspace*{\fill}}  
+\renewcommand{\listfigurename}{\hspace*{\fill}\bfseries\large List of figures\hspace*{\fill}}  
 
 %Reformat List of Tables, etc.
-\renewcommand{\listtablename}{\hspace*{\fill}\bfseries\large List of Tables\hspace*{\fill}}  
+\renewcommand{\listtablename}{\hspace*{\fill}\bfseries\large List of tables\hspace*{\fill}}  
 
 
 %This creates a List of Equations.
